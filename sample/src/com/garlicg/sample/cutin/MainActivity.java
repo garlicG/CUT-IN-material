@@ -15,7 +15,7 @@ public class MainActivity extends SimpleCutinActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		// カットインのアイテムリストを作成します。
+		// create CUT-IN list.
 		ArrayList<CutinItem> items = new ArrayList<MainActivity.CutinItem>();
 		items.add(new CutinItem(GarlinTornado.class,getString(R.string.garlin_tornado)));
 		items.add(new CutinItem(GarlinMirage.class, getString(R.string.garlin_mirage)));
