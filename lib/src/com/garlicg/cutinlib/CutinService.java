@@ -33,7 +33,7 @@ public abstract class CutinService extends Service {
 		mLayout = create();
 
 		if (mLayout == null) {
-			throw new NullPointerException("Create view return null.");
+			throw new NullPointerException("CutinService#create need to return view.");
 		}
 
 		WindowManager.LayoutParams params = new WindowManager.LayoutParams(
