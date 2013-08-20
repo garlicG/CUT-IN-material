@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">がーりん</string>
+    <string name="garlin_tornado">がーりんトルネード</string>
+    <string name="garlin_mirage">がーりんミラージュ</string>
+    <string name="garlin_parade">がーりんパレード</string>
+    <string name="error_no_choice">選択されていません</string>
+
+</resources>
