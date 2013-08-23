@@ -31,6 +31,23 @@
             android:background="#88AAAAAA" />
 
         <TextView
+            android:id="@+id/__cutin_demoButton"
+            style="?android:attr/textAppearanceMedium"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/__cutin_bottom_button"
+            android:gravity="center"
+            android:text="PLAY" />
+        
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="12dp"
+            android:background="#88AAAAAA" />
+
+        <TextView
             android:id="@+id/__cutin_okButton"
             style="?android:attr/textAppearanceMedium"
             android:layout_width="0dp"

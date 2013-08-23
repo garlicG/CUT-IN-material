@@ -41,21 +41,16 @@ public class SimpleCutinActivity extends Activity{
 		setContentView(R.layout.activity_simple_cutin);
 		
 		mListView =(ListView)findViewById(R.id.__cutin_simple_ListView);
-		mListView.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
-					long arg3) {
-				CutinItem item = (CutinItem)arg0.getItemAtPosition(position);
-				
-				if(mCutinIntent != null){
-					if(!mCutinIntent.getComponent().getClassName().equals(item.serviceClass.getName())){
-						stopService(mCutinIntent);
-					}
+		if(mState == STATE_VIEW){
+			mListView.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+						long arg3) {
+					CutinItem item = (CutinItem)arg0.getItemAtPosition(position);
+					play(item.serviceClass);
 				}
-				mCutinIntent = new Intent(self , item.serviceClass);
-				startService(mCutinIntent);
-			}
-		});
+			});
+		}
 	}
 	
 	@Override
@@ -74,7 +69,7 @@ public class SimpleCutinActivity extends Activity{
 			ArrayAdapter<CutinItem> adapter = new ArrayAdapter<SimpleCutinActivity.CutinItem>(this, android.R.layout.simple_list_item_1, list);
 			mListView.setAdapter(adapter);
 		}
-				
+		
 		// Call from official cut-in app
 		else if(mState == STATE_PICK){
 			// Set ListView with SingleChoiceMode.
@@ -87,11 +82,10 @@ public class SimpleCutinActivity extends Activity{
 			View bottomFrame = stub.inflate();
 			
 			// OK button
-			TextView okButton = (TextView)bottomFrame.findViewById(R.id.__cutin_okButton);
+			View okButton = bottomFrame.findViewById(R.id.__cutin_okButton);
 			okButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					android.util.Log.v("TAG","click: " + v);
 					int position = mListView.getCheckedItemPosition();
 					CutinItem item = (CutinItem)mListView.getItemAtPosition(position);
 					if(item != null){
@@ -107,8 +101,23 @@ public class SimpleCutinActivity extends Activity{
 				}
 			});
 			
+			// Play button
+			View demoButton = bottomFrame.findViewById(R.id.__cutin_demoButton);
+			demoButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					int position = mListView.getCheckedItemPosition();
+					CutinItem item = (CutinItem)mListView.getItemAtPosition(position);
+					if(item == null){
+						Toaster.post(self, "No selected item");
+						return;
+					}
+					play(item.serviceClass);
+				}
+			});
+			
 			// Cancel button
-			TextView cancel = (TextView)bottomFrame.findViewById(R.id.__cutin_cancelButton);
+			View cancel = bottomFrame.findViewById(R.id.__cutin_cancelButton);
 			cancel.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -117,6 +126,16 @@ public class SimpleCutinActivity extends Activity{
 				}
 			});
 		}
+	}
+	
+	private void play( Class<? extends CutinService> serviceClass){
+		if(mCutinIntent != null){
+			if(!mCutinIntent.getComponent().getClassName().equals(serviceClass.getName())){
+				stopService(mCutinIntent);
+			}
+		}
+		mCutinIntent = new Intent(self , serviceClass);
+		startService(mCutinIntent);
 	}
 	
 	public class CutinItem{
