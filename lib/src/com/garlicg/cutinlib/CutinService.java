@@ -36,9 +36,10 @@ public abstract class CutinService extends Service {
 			throw new NullPointerException("CutinService#create need to return view.");
 		}
 
+		@SuppressWarnings("deprecation")
 		WindowManager.LayoutParams params = new WindowManager.LayoutParams(
-				WindowManager.LayoutParams.MATCH_PARENT,
-				WindowManager.LayoutParams.MATCH_PARENT,
+				WindowManager.LayoutParams.FILL_PARENT,
+				WindowManager.LayoutParams.FILL_PARENT,
 				WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				PixelFormat.TRANSLUCENT);
@@ -51,6 +52,8 @@ public abstract class CutinService extends Service {
 	final public int onStartCommand(Intent intent, int flags, final int startId) {
 		if (!mStarted) {
 			mStarted = true;
+			
+			// must to be possible to get view size on start method. 
 			new Handler().post(new Runnable() {
 				@Override
 				public void run() {
