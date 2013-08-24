@@ -3,82 +3,86 @@ package com.garlicg.cutinlib;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.garlicg.cutinlib.util.Toaster;
 
-public class SimpleCutinActivity extends Activity{
-	private final SimpleCutinActivity self = this;
+public class SimpleCutinScreen{
+	public final static int STATE_VIEW = 0;
+	public final static int STATE_PICK = 1;
+	private int mState = STATE_VIEW;
+	private View mViewParent;
+	private PickListener mListener;
+	private Context mContext;
+	Intent mCutinIntent;
 	
-	private Intent mCutinIntent;
-	private ListView mListView;
-	protected final static int STATE_VIEW = 0;
-	protected final static int STATE_PICK = 1;
-	private int mState;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
-		String action = getIntent().getAction();
+	public SimpleCutinScreen(Context context , Intent intent){
+		mContext = context;
+		mViewParent = LayoutInflater.from(context).inflate(R.layout.activity_simple_cutin, null);
+		String action = intent.getAction();
 		if(!TextUtils.isEmpty(action) && action.equals(CutinInfo.ACTION_PICK_CUTIN)){
+			// Call from official cut-in app
 			mState = STATE_PICK;
 		}
 		else{
 			mState = STATE_VIEW;
 		}
-		
-		setContentView(R.layout.activity_simple_cutin);
-		
-		mListView =(ListView)findViewById(R.id.__cutin_simple_ListView);
+	}
+	
+	public View getView(){
+		return mViewParent;
+	}
+	
+	public void loadIntent(Intent intent){
+	}
+	
+	public int getState(){
+		return mState;
+	}
+	
+	public interface PickListener{
+		public void ok(Intent intent);
+		public void cancel();
+	}
+	
+	public void setListener(PickListener listener){
+		mListener = listener;
+	}
+	
+	public void setCutinList(ArrayList<CutinItem> list , Intent intent){
+		final ListView listView = (ListView)mViewParent.findViewById(R.id.__cutin_simple_ListView);
+
+		// launched from launcher ,etc
 		if(mState == STATE_VIEW){
-			mListView.setOnItemClickListener(new OnItemClickListener() {
+			ArrayAdapter<CutinItem> adapter = new ArrayAdapter<SimpleCutinScreen.CutinItem>(mViewParent.getContext(), android.R.layout.simple_list_item_1, list);
+			listView.setAdapter(adapter);
+			listView.setOnItemClickListener(new OnItemClickListener() {
 				@Override
-				public void onItemClick(AdapterView<?> arg0, View arg1, int position,
-						long arg3) {
-					CutinItem item = (CutinItem)arg0.getItemAtPosition(position);
+				public void onItemClick(AdapterView<?> arg0, View arg1,
+						int arg2, long arg3) {
+					CutinItem item = (CutinItem)arg0.getItemAtPosition(arg2);
 					play(item.serviceClass);
 				}
 			});
 		}
-	}
-	
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-		setResult(RESULT_CANCELED);
-	}
-	
-	protected int getState(){
-		return mState;
-	}
-	
-	protected void setCutinList(ArrayList<CutinItem> list){
-		// launch from launcher ,etc
-		if(mState == STATE_VIEW){
-			ArrayAdapter<CutinItem> adapter = new ArrayAdapter<SimpleCutinActivity.CutinItem>(this, android.R.layout.simple_list_item_1, list);
-			mListView.setAdapter(adapter);
-		}
 		
-		// Call from official cut-in app
 		else if(mState == STATE_PICK){
 			// Set ListView with SingleChoiceMode.
-			ArrayAdapter<CutinItem> adapter = new ArrayAdapter<SimpleCutinActivity.CutinItem>(this, android.R.layout.simple_list_item_single_choice, list);
-			mListView.setAdapter(adapter);
-			mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+			ArrayAdapter<CutinItem> adapter = new ArrayAdapter<SimpleCutinScreen.CutinItem>(mViewParent.getContext(), android.R.layout.simple_list_item_single_choice, list);
+			listView.setAdapter(adapter);
+			listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 			
 			// inflate footer
-			ViewStub stub = (ViewStub)findViewById(R.id.__cutin_simple_PickerFrame);
+			ViewStub stub = (ViewStub)mViewParent.findViewById(R.id.__cutin_simple_PickerFrame);
 			View bottomFrame = stub.inflate();
 			
 			// OK button
@@ -86,17 +90,16 @@ public class SimpleCutinActivity extends Activity{
 			okButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					int position = mListView.getCheckedItemPosition();
-					CutinItem item = (CutinItem)mListView.getItemAtPosition(position);
+					int position = listView.getCheckedItemPosition();
+					CutinItem item = (CutinItem)listView.getItemAtPosition(position);
 					if(item != null){
 						Intent intent = new Intent();
 						intent.putExtra(CutinInfo.DATA_ACTION_NAME, item.serviceClass.getName());
 						intent.putExtra(CutinInfo.DATA_CUTIN_NAME, item.cutinName);
-						setResult(RESULT_OK, intent);
-						finish();
+						mListener.ok(intent);
 					}
 					else {
-						Toaster.post(self, "No selected item");
+						Toaster.post(v.getContext(), "No selected item");
 					}
 				}
 			});
@@ -106,10 +109,10 @@ public class SimpleCutinActivity extends Activity{
 			demoButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					int position = mListView.getCheckedItemPosition();
-					CutinItem item = (CutinItem)mListView.getItemAtPosition(position);
+					int position = listView.getCheckedItemPosition();
+					CutinItem item = (CutinItem)listView.getItemAtPosition(position);
 					if(item == null){
-						Toaster.post(self, "No selected item");
+						Toaster.post(v.getContext(), "No selected item");
 						return;
 					}
 					play(item.serviceClass);
@@ -121,8 +124,7 @@ public class SimpleCutinActivity extends Activity{
 			cancel.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					setResult(RESULT_CANCELED);
-					finish();
+					mListener.cancel();
 				}
 			});
 		}
@@ -131,14 +133,14 @@ public class SimpleCutinActivity extends Activity{
 	private void play( Class<? extends CutinService> serviceClass){
 		if(mCutinIntent != null){
 			if(!mCutinIntent.getComponent().getClassName().equals(serviceClass.getName())){
-				stopService(mCutinIntent);
+				mContext.stopService(mCutinIntent);
 			}
 		}
-		mCutinIntent = new Intent(self , serviceClass);
-		startService(mCutinIntent);
+		mCutinIntent = new Intent(mContext , serviceClass);
+		mContext.startService(mCutinIntent);
 	}
 	
-	public class CutinItem{
+	public static class CutinItem{
 		private Class<? extends CutinService> serviceClass;
 		private String cutinName;
 		
