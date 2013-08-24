@@ -13,7 +13,6 @@ import android.graphics.PixelFormat;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.Rect;
 import android.view.LayoutInflater;
-import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -56,7 +55,7 @@ public class GarlinParade extends CutinService {
 		void endAnimation();
 	}
 	
-	private class ParadeView extends SurfaceView implements SurfaceHolder.Callback{
+	private class ParadeView extends SurfaceView{
 		private class Garlin{
 			private Rect src;
 			private Rect dest;
@@ -82,58 +81,53 @@ public class GarlinParade extends CutinService {
 			super(context);
 			Logger.v("PradaView");
 			mTimer = new Timer(true);
-			getHolder().addCallback(this);
 			getHolder().setFormat(PixelFormat.TRANSPARENT);
 			mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.garlin);
 		}
 		
 		@Override
-		public void surfaceChanged(SurfaceHolder holder, int format, int width,
-				int height) {
-			Logger.v("width:" + width + " , height:" + height);
-			
-			mScreenWidth = width;
-			mScreenHeight = height;
-			
+		protected void onLayout(boolean changed, int left, int top, int right,
+				int bottom) {
+			super.onLayout(changed, left, top, right, bottom);
+			Logger.v("onLayout");
+			mScreenWidth = right -left;
+			mScreenHeight = bottom - top;
+
 			mGarlinWidth = (int)(mScreenHeight / MAX_TATE);
 			mGarlinRectX = mGarlinWidth/2;
 			mGarlinRectY = mGarlinWidth;
 		}
-
-		@Override
-		public void surfaceCreated(SurfaceHolder holder) {
-			Logger.v("surface create");
-		}
-
-		@Override
-		public void surfaceDestroyed(SurfaceHolder holder) {
-			Logger.v("surface destroy");
-			mBitmap.recycle();
-		}
 		
 		private void onDestroy(){
 			mTimer.purge();
+			mBitmap.recycle();
 		}
 		
 		protected void draw() {
 			if(!mBitmap.isRecycled()){
 				Canvas canvas = getHolder().lockCanvas();
 				if(canvas != null){
-					canvas.translate(mScreenDx, 0);
-					canvas.drawColor(Color.TRANSPARENT, Mode.CLEAR);
-					int size1 = mGarlins.length;
-					for(int i = 0 ; i < size1 ; i++){
-						int size2 = mGarlins[i].length;
-						for(int s = 0 ; s < size2 ; s++){
-							Garlin garin = mGarlins[i][s];
-							// 描画
-							canvas.save();
-							canvas.rotate((float)(Math.random()*20)-10 , garin.dest.left,garin.dest.top);
-							canvas.drawBitmap(mBitmap, garin.src, garin.dest, null);
-							canvas.restore();
+					try {
+						canvas.translate(mScreenDx, 0);
+						canvas.drawColor(Color.TRANSPARENT, Mode.CLEAR);
+						int size1 = mGarlins.length;
+						for(int i = 0 ; i < size1 ; i++){
+							int size2 = mGarlins[i].length;
+							for(int s = 0 ; s < size2 ; s++){
+								Garlin garin = mGarlins[i][s];
+								// 描画
+								canvas.save();
+								canvas.rotate((float)(Math.random()*20)-10 , garin.dest.left,garin.dest.top);
+								canvas.drawBitmap(mBitmap, garin.src, garin.dest, null);
+								canvas.restore();
+							}
 						}
+					} catch (RuntimeException e) {
+						Logger.e("GarlinParado" ,e.toString());
 					}
-					getHolder().unlockCanvasAndPost(canvas);
+					finally{
+						getHolder().unlockCanvasAndPost(canvas);
+					}
 				}
 			}
 		}
