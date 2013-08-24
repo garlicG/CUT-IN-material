@@ -84,6 +84,7 @@ public class GarlinParade extends CutinService {
 			mTimer = new Timer(true);
 			getHolder().addCallback(this);
 			getHolder().setFormat(PixelFormat.TRANSPARENT);
+			mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.garlin);
 		}
 		
 		@Override
@@ -102,7 +103,6 @@ public class GarlinParade extends CutinService {
 		@Override
 		public void surfaceCreated(SurfaceHolder holder) {
 			Logger.v("surface create");
-			mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.garlin);
 		}
 
 		@Override
