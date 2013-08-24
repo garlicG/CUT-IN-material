@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/cutin_title"
         android:padding="8dp"
         android:text="@string/garlin_tornado"
