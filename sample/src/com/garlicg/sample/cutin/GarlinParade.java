@@ -23,7 +23,8 @@ public class GarlinParade extends CutinService {
 	protected View create() {
 		RelativeLayout layout = (RelativeLayout)LayoutInflater.from(this).inflate(R.layout.garlin_parade, null);
 		mView = new ParadeView(this);
-		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		@SuppressWarnings("deprecation")
+		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
 		layout.addView(mView, 0, p);
 		return layout;
 	}
@@ -36,7 +37,6 @@ public class GarlinParade extends CutinService {
 				finishCutin();
 			}
 		});
-		
 		mView.startParade();
 	}
 
@@ -137,7 +137,7 @@ public class GarlinParade extends CutinService {
 			mDx = -(mScreenWidth + mGarlinRectX * MAX_YOKO);
 			mFinishDx = mScreenWidth + mGarlinRectX * MAX_YOKO;
 			
-			// 定期描画タスク
+			// invalidater
 			mTimer.schedule(new TimerTask() {
 				@Override
 				public void run() {
