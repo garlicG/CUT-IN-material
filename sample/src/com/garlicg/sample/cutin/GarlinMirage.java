@@ -26,7 +26,8 @@ public class GarlinMirage extends CutinService {
 		RelativeLayout layout = (RelativeLayout)LayoutInflater.from(this).inflate(R.layout.garlin_mirage, null);
 		mView = new MirageView(this);
 		mView.invalidate();
-		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		@SuppressWarnings("deprecation")
+		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
 		layout.addView(mView, 0, p);
 
 		return layout;
@@ -53,7 +54,6 @@ public class GarlinMirage extends CutinService {
 	private interface OnAnimationEndListener{
 		void endAnimation();
 	}
-	
 	
 	public static  class MirageView extends View{
 
@@ -161,7 +161,7 @@ public class GarlinMirage extends CutinService {
 				}
 			}, 0,RATE);
 			
-			// パラメータ変更タスク SCENE1
+			// param updater : middle
 			mTimer.schedule(new TimerTask() {
 				int sCount1 = 0;
 				@Override
@@ -181,7 +181,7 @@ public class GarlinMirage extends CutinService {
 				}
 			},0,100);
 			
-			// パラメータ変更タスク Bottom
+			// param updater : Bottom
 			mTimer.schedule(new TimerTask() {
 				int sCount = 0;
 				@Override
@@ -193,6 +193,7 @@ public class GarlinMirage extends CutinService {
 				}
 			}, 400 , 80);
 			
+			// param updater : top
 			mTimer.schedule(new TimerTask() {
 				int sCount = 0;
 				@Override
@@ -204,7 +205,7 @@ public class GarlinMirage extends CutinService {
 				}
 			}, 800 , 80);
 			
-			// TOP
+			// cutin canceler
 			mTimer.schedule(new TimerTask() {
 				@Override
 				public void run() {
@@ -216,7 +217,7 @@ public class GarlinMirage extends CutinService {
 						}
 					});
 				}
-			}, 3000);
+			}, 2800);
 		}
 		
 		private void createGarlins(){
@@ -260,7 +261,7 @@ public class GarlinMirage extends CutinService {
 					mGarlins1[2].dst.bottom - mGarlinBaseWidth/10
 					);
 			
-			// 上の段 等間隔 // 下の段　等間隔
+			// 上の段 等間隔  下の段　等間隔
 			mGarlinBaseWidth = tmp;
 			mGarlins2Top = new Garlin[7];
 			mGarlins2Bottom = new Garlin[7];
