@@ -27,7 +27,7 @@ public class SimpleCutinScreen{
 	
 	public SimpleCutinScreen(Context context , Intent intent){
 		mContext = context;
-		mViewParent = LayoutInflater.from(context).inflate(R.layout.activity_simple_cutin, null);
+		mViewParent = LayoutInflater.from(context).inflate(R.layout.cutin_simple_screen, null);
 		String action = intent.getAction();
 		if(!TextUtils.isEmpty(action) && action.equals(CutinInfo.ACTION_PICK_CUTIN)){
 			// Call from official cut-in app

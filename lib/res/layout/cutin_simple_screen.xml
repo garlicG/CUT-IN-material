@@ -15,6 +15,6 @@
         android:id="@+id/__cutin_simple_PickerFrame"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout="@layout/bottom_frame"
+        android:layout="@layout/cutin_bottom_frame"
         />
 </LinearLayout>
