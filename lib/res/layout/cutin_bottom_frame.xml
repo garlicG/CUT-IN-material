@@ -1,12 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#F0F0F0"
     android:orientation="vertical" >
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#88888888" />
+        android:background="#66888888" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,47 +16,50 @@
 
         <TextView
             android:id="@+id/__cutin_cancelButton"
-            style="?android:attr/textAppearanceMedium"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/__cutin_bottom_button"
             android:gravity="center"
-            android:text="@android:string/cancel" />
+            android:text="@android:string/cancel"
+            android:textColor="#333"
+            android:textSize="18sp" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="12dp"
             android:layout_marginTop="12dp"
-            android:background="#88AAAAAA" />
+            android:background="#66888888" />
 
         <TextView
             android:id="@+id/__cutin_demoButton"
-            style="?android:attr/textAppearanceMedium"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/__cutin_bottom_button"
             android:gravity="center"
-            android:text="PLAY" />
-        
+            android:text="PLAY"
+            android:textColor="#333"
+            android:textSize="18sp" />
+
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="12dp"
             android:layout_marginTop="12dp"
-            android:background="#88AAAAAA" />
+            android:background="#66888888" />
 
         <TextView
             android:id="@+id/__cutin_okButton"
-            style="?android:attr/textAppearanceMedium"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/__cutin_bottom_button"
             android:gravity="center"
-            android:text="@android:string/ok" />
+            android:text="@android:string/ok"
+            android:textColor="#333"
+            android:textSize="18sp" />
     </LinearLayout>
 
 </LinearLayout>
