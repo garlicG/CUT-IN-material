@@ -1,7 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#F0F0F0"
     android:orientation="vertical" >
 
     <View
@@ -16,14 +15,13 @@
 
         <TextView
             android:id="@+id/__cutin_cancelButton"
+            style="@android:style/TextAppearance.Medium"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/__cutin_bottom_button"
             android:gravity="center"
-            android:text="@android:string/cancel"
-            android:textColor="#333"
-            android:textSize="18sp" />
+            android:text="@android:string/cancel" />
 
         <View
             android:layout_width="1dp"
@@ -34,14 +32,13 @@
 
         <TextView
             android:id="@+id/__cutin_demoButton"
+            style="@android:style/TextAppearance.Medium"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/__cutin_bottom_button"
             android:gravity="center"
-            android:text="PLAY"
-            android:textColor="#333"
-            android:textSize="18sp" />
+            android:text="PLAY" />
 
         <View
             android:layout_width="1dp"
@@ -52,14 +49,13 @@
 
         <TextView
             android:id="@+id/__cutin_okButton"
+            style="@android:style/TextAppearance.Medium"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/__cutin_bottom_button"
             android:gravity="center"
-            android:text="@android:string/ok"
-            android:textColor="#333"
-            android:textSize="18sp" />
+            android:text="@android:string/ok" />
     </LinearLayout>
 
 </LinearLayout>
