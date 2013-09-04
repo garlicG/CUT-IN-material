@@ -28,6 +28,5 @@ public class Demo {
 			mContext.stopService(mCutinIntent);
 		}
 		mCutinIntent = null;
-		mContext = null;
 	}
 }
