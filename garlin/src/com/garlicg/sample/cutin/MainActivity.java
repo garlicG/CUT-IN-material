@@ -17,6 +17,7 @@ import com.garlicg.cutinlib.CutinItem;
 			items.add(new CutinItem(GarlinTornado.class,getString(R.string.garlin_tornado)));
 			items.add(new CutinItem(GarlinMirage.class, getString(R.string.garlin_mirage)));
 			items.add(new CutinItem(GarlinParade.class, getString(R.string.garlin_parade)));
+			
 			getCutinScreen().setCutinList(items);
 		}
 }
