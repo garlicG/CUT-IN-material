@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Garlin</string>
+    <string name="garlin_tornado">GARLIN TORNADO</string>
+    <string name="garlin_mirage">GARLIN MIRAGE</string>
+    <string name="garlin_parade">GARLIN PARADE</string>
+    <string name="error_no_choice">No selected item</string>
+
+</resources>
