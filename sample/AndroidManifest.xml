@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cutin.sample"
     android:versionCode="1"
     android:versionName="1.0" >
@@ -32,22 +31,23 @@
             </intent-filter>
         </activity>
 
-        <service android:name="cutin.sample.CutinService1" 
-            android:process=".CutinService1" >
+        <service
+            android:name="cutin.sample.CutinService1"
+            android:process=".cutinService1" >
             <intent-filter>
                 <action android:name="cutin.sample.CutinService1" />
             </intent-filter>
         </service>
         <service
             android:name="cutin.sample.CutinService2"
-            android:process=".CutinService2" >
+            android:process=".cutinService2" >
             <intent-filter>
                 <action android:name="cutin.sample.CutinService2" />
             </intent-filter>
         </service>
         <service
             android:name="cutin.sample.CutinService3"
-            android:process=".CutinService3" >
+            android:process=".cutinService3" >
             <intent-filter>
                 <action android:name="cutin.sample.CutinService3" />
             </intent-filter>
@@ -55,3 +55,4 @@
     </application>
 
 </manifest>
+
