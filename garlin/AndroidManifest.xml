@@ -34,21 +34,21 @@
 
         <service
             android:name="com.garlicg.sample.cutin.GarlinMirage"
-            android:process=".GarlinMirage" >
+            android:process=".garlinMirage" >
             <intent-filter>
                 <action android:name="com.garlicg.sample.cutin.GarlinMirage" />
             </intent-filter>
         </service>
         <service
             android:name="com.garlicg.sample.cutin.GarlinParade"
-            android:process=".GarlinParade" >
+            android:process=".garlinParade" >
             <intent-filter>
                 <action android:name="com.garlicg.sample.cutin.GarlinParade" />
             </intent-filter>
         </service>
         <service
             android:name="com.garlicg.sample.cutin.GarlinTornado"
-            android:process=".GarlinTornado" >
+            android:process=".garlinTornado" >
             <intent-filter>
                 <action android:name="com.garlicg.sample.cutin.GarlinTornado" />
             </intent-filter>
