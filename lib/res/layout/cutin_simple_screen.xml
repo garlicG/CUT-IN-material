@@ -12,6 +12,7 @@
         android:layout_weight="1" 
         android:divider="@null"
         android:listSelector="@android:color/transparent"
+        android:scrollingCache="false"
         />
     
     <ViewStub 
