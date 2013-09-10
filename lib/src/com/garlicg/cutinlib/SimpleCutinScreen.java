@@ -149,10 +149,7 @@ public class SimpleCutinScreen{
 						Object item = mListView.getItemAtPosition(position);
 						if(item != null && item instanceof CutinItem){
 							CutinItem ci = (CutinItem)item;
-							Intent intent = new Intent();
-							intent.putExtra(CutinInfo.DATA_ACTION_NAME, ci.serviceClass.getName());
-							intent.putExtra(CutinInfo.DATA_CUTIN_NAME, ci.cutinName);
-							mListener.ok(intent);
+							mListener.ok(CutinInfo.buildPickedIntent(ci));
 						}
 						else {
 							// no  selected item
