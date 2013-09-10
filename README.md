@@ -3,7 +3,7 @@ CUT-IN material
 
 What is CUT-IN? It is effects on your phone, like in games but not in games. Try out the [sample app](https://play.google.com/store/apps/details?id=cutin.sample) on the Google Play.
 
-[pic]
+![garlin_padado](garlin_parado.png)
 
 CUT-IN Material is based on [CUT-IN Manager](https://play.google.com/store/apps/details?id=com.garlicg.cutin) app. CUT-IN Manger call Materials at the follow cases:
 
