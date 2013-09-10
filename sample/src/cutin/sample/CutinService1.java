@@ -12,9 +12,6 @@ public class CutinService1 extends CutinService{
 	
 	private View mDroid;
 
-	/**
-	 * Create root view which is inflated to full screen window.
-	 */
 	@Override
 	protected View create() {
 		LayoutInflater inflater = LayoutInflater.from(this);
@@ -27,10 +24,6 @@ public class CutinService1 extends CutinService{
 		return layout;
 	}
 	
-	/**
-	 * start() is called after create(). At this time, view size is possible to get.
-	 * You must call finishCutin() or stopSelf() after your animation ending.
-	 */
 	@Override
 	protected void start() {
 		// Animation which droid 2 rotate.
@@ -57,9 +50,6 @@ public class CutinService1 extends CutinService{
 		mDroid.startAnimation(anim);
 	}
 
-	/**
-	 * Release the resources, etc.
-	 */
 	@Override
 	protected void destroy() {
 	}

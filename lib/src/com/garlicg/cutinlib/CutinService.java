@@ -15,10 +15,20 @@ public abstract class CutinService extends Service {
 	private WindowManager mWindowManager;
 	private boolean mStarted = false;
 
+	/**
+	 * Create root view which is inflated to full screen window.
+	 */
 	protected abstract View create();
 
+	/**
+	 * It is called after create(). At this time, view size is possible to get.
+	 * You must call finishCutin() or stopSelf() after your animation ending.
+	 */
 	protected abstract void start();
 
+	/**
+	 * Release the resources, etc.
+	 */
 	protected abstract void destroy();
 
 	@Override
