@@ -31,7 +31,7 @@ For a working implementation of this project , add the lib/ as the AndroidLibrar
  |void |	destroy |	Release resources, etc.　
  
 2. Copy the sample/cutin/sample/MainActivity and replace these lines to your CutinServices in your onCreate.
-3. 
+ 
 ```java    
  		// Create your CutinService list:
 		// cutinName(SAMPLE) used for showing on the display in your app and CUT-IN Manager. 
@@ -63,6 +63,7 @@ Activity
 ```
 
 CutinService
+android:process must start .(dot) charactor.
 
 ```xml
     <service
@@ -74,9 +75,6 @@ CutinService
     </service>
 ```
     
-android:process must start .(dot) charactor.
-
-
 Intent from CUT-IN Manager
 ---
 ```java
