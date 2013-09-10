@@ -1,11 +1,11 @@
 CUT-IN material
 ---
 
-What is CUT-IN? It is effects on your phone, like in games but not in games. Try out the sample app on the Google Play.
+What is CUT-IN? It is effects on your phone, like in games but not in games. Try out the [sample app](https://play.google.com/store/apps/details?id=cutin.sample) on the Google Play.
 
 [pic]
 
-CUT-IN Material is based on CUT-IN Manager app. CUT-IN Manger call Materials at the follow cases:
+CUT-IN Material is based on [CUT-IN Manager](https://play.google.com/store/apps/details?id=com.garlicg.cutin) app. CUT-IN Manger call Materials at the follow cases:
 
  * Screen turns on.
  * External power is connected.
@@ -32,7 +32,7 @@ For a working implementation of this project , add the lib/ as the AndroidLibrar
  
 2. Copy the sample/cutin/sample/MainActivity and replace these lines to your CutinServices in your onCreate.
  
-```java    
+ ```java    
  		// Create your CutinService list:
 		// cutinName(SAMPLE) used for showing on the display in your app and CUT-IN Manager. 
 		ArrayList<CutinItem> list = new ArrayList<CutinItem>();
@@ -40,12 +40,11 @@ For a working implementation of this project , add the lib/ as the AndroidLibrar
 		list.add(new CutinItem(CutinService2.class, "SAMPLE2"));
 		list.add(new CutinItem(CutinService3.class, "SAMPLE3"));
 		mScreen.setCutinList(list);
-```
+ ```
 
 3. AndroidManifest.xml
 
 Activity
-
 ```xml
     <activity
         android:name="(your)ActivityName"
@@ -63,8 +62,6 @@ Activity
 ```
 
 CutinService
-android:process must start .(dot) charactor.
-
 ```xml
     <service
         android:name="(your)package.CutinServiceClassName"
@@ -74,9 +71,11 @@ android:process must start .(dot) charactor.
         </intent-filter>
     </service>
 ```
-    
+`android:process` must start .(dot) charactor.
+
 Intent from CUT-IN Manager
 ---
+`onCreate` in your `Activity`.
 ```java
 		String action = getIntent().getAction();
 		if(!TextUtils.isEmpty(action) && action.equals(CutinInfo.ACTION_PICK_CUTIN)){
@@ -86,6 +85,7 @@ Intent from CUT-IN Manager
 
 Return Intent to CUT-IN Manager
 ---
+Somewhere to finish in your `Activity`.
 ```java
 		CutinItem item = new CutinItem(CutinService.class , "SAMPLE 1");
 		Intent intent = CutinInfo.buildPickedIntent(item);
@@ -95,7 +95,7 @@ Return Intent to CUT-IN Manager
 
 Debug
 ---
-If logcat do not show logs, remove android:process defination of CutinService in `AndroidManifest.xml`.
+If logcat do not show logs, remove `android:process` defination of CutinService in `AndroidManifest.xml`.
 
 
 License
