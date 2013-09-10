@@ -21,7 +21,7 @@ public class MainActivity extends Activity implements SimpleCutinScreen.PickList
 		setContentView(mScreen.getView());
 		
 		// Create your CutinService list:
-		// cutinName use for showing on the display in your app and CUT-IN Manager. 
+		// cutinName(SAMPLE) use for showing on the display in your app and CUT-IN Manager. 
 		ArrayList<CutinItem> list = new ArrayList<CutinItem>();
 		list.add(new CutinItem(CutinService1.class, "SAMPLE1"));
 		list.add(new CutinItem(CutinService2.class, "SAMPLE2"));

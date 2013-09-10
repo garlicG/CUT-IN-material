@@ -27,7 +27,7 @@ public abstract class CutinService extends Service {
 	protected abstract void start();
 
 	/**
-	 * Release the resources, etc.
+	 * Release resources, etc.
 	 */
 	protected abstract void destroy();
 
