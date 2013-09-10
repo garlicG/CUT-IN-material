@@ -20,7 +20,7 @@ GarlicG : garlicg@gmail.com
 Quick Start
 ---
 
-For a working implementation of this project , add the lib/ as the AndroidLibraryProject and see the sample/ folder.
+For a working implementation of this project , add the `lib/` as the AndroidLibraryProject and see the `sample/` folder.
 
 1. Create a class for showing CUT-IN extends CutinService.
 
@@ -30,7 +30,7 @@ For a working implementation of this project , add the lib/ as the AndroidLibrar
  |void	| start |	It is called after create(). At this time view size is possible to get. You must call finishCutin() or stopSelf() after your execution ending.
  |void |	destroy |	Release resources, etc.　
  
-2. Copy the sample/cutin/sample/MainActivity and replace these lines to your CutinServices in your onCreate.
+2. Copy the `sample/cutin/sample/MainActivity` and replace these lines to your CutinServices in your onCreate.
  
  ```java    
  		// Create your CutinService list:
