@@ -99,7 +99,7 @@ If logcat do not show logs, remove `android:process` defination of CutinService 
 
 Garlin
 ---
-`/garlin` is sample project for general user And look at sample of `minSdkVersion = 7`. It needs [v7 appcompat library](http://developer.android.com/tools/support-library/index.html) as Android library project.
+`/garlin` is sample project for general user. Also it is sample of `minSdkVersion = 7`. It needs [v7 appcompat library](http://developer.android.com/tools/support-library/index.html) as Android library project.
 
 
 License
