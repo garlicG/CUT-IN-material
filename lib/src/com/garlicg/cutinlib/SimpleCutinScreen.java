@@ -110,8 +110,6 @@ public class SimpleCutinScreen{
 		// remove view after get the manager app from this.
 		if(existManager(mContext) && mGetView != null){
 			mListView.removeHeaderView(mGetView);
-			mGetView= null;
-			mListView.addHeaderView(newPaddingView(mContext));
 		}
 	}
 	
