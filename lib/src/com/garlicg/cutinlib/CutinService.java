@@ -24,7 +24,7 @@ public abstract class CutinService extends Service {
 	 * It is called after create(). At this time, view size is possible to get.
 	 * You must call finishCutin() or stopSelf() after your animation ending.
 	 */
-	protected abstract void start();
+	protected abstract void start(Intent intent, int flags, int startId);
 
 	/**
 	 * Release resources, etc.
@@ -59,7 +59,7 @@ public abstract class CutinService extends Service {
 	}
 
 	@Override
-	final public int onStartCommand(Intent intent, int flags, final int startId) {
+	final public int onStartCommand(final Intent intent, final int flags, final int startId) {
 		if (!mStarted) {
 			mStarted = true;
 			
@@ -67,7 +67,7 @@ public abstract class CutinService extends Service {
 			new Handler().post(new Runnable() {
 				@Override
 				public void run() {
-					start();
+					start(intent,flags,startId);
 				}
 			});
 		} else {

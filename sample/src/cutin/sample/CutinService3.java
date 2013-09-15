@@ -1,5 +1,6 @@
 package cutin.sample;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -22,7 +23,7 @@ public class CutinService3 extends CutinService{
 	}
 
 	@Override
-	protected void start() {
+	protected void start(Intent intent, int flags, int startId) {
 		// Animation which droid 10 rotate.
 		int centerX = mDroid.getWidth()/2;
 		int centerY = mDroid.getHeight()/2;

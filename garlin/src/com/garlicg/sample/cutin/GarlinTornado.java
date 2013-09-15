@@ -6,6 +6,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +34,7 @@ public class GarlinTornado extends CutinService {
 
 	@SuppressLint("NewApi")
 	@Override
-	protected void start() {
+	protected void start(Intent intent, int flags, int startId) {
 		
 		// for 2.x 3.x
 		if(Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH){

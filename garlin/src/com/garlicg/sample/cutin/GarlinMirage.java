@@ -4,6 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -34,7 +35,7 @@ public class GarlinMirage extends CutinService {
 	}
 	
 	@Override
-	protected void start() {
+	protected void start(Intent intent, int flags, int startId) {
 		mView.setOnMirageEndListener(new OnAnimationEndListener() {
 			@Override
 			public void endAnimation() {
