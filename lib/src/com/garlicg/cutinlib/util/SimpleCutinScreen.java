@@ -1,7 +1,13 @@
-package com.garlicg.cutinlib;
+package com.garlicg.cutinlib.util;
 
 
 import java.util.ArrayList;
+
+import com.garlicg.cutinlib.CutinInfo;
+import com.garlicg.cutinlib.CutinItem;
+import com.garlicg.cutinlib.R;
+import com.garlicg.cutinlib.R.id;
+import com.garlicg.cutinlib.R.layout;
 
 import android.content.Context;
 import android.content.Intent;

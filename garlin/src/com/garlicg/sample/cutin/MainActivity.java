@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.garlicg.cutinlib.CutinItem;
 
+
 	public class MainActivity extends CutinBaseV7 {
 		
 		@Override

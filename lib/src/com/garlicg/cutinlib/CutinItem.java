@@ -1,5 +1,6 @@
 package com.garlicg.cutinlib;
 
+
 public class CutinItem {
 	public Class<? extends CutinService> serviceClass;
 	public String cutinName;

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
-import com.garlicg.cutinlib.SimpleCutinScreen;
+import com.garlicg.cutinlib.util.SimpleCutinScreen;
 
 public class CutinBaseV7 extends ActionBarActivity implements SimpleCutinScreen.PickListener{
 	private SimpleCutinScreen mScreen;
