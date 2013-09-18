@@ -22,7 +22,7 @@ public abstract class CutinService extends Service {
 
 	/**
 	 * It is called after create(). At this time, view size is possible to get.
-	 * You must call finishCutin() or stopSelf() after your animation ending.
+	 * You must call finishCutin() or stopSelf() after end of your execution.
 	 */
 	protected abstract void start(Intent intent, int flags, int startId);
 
