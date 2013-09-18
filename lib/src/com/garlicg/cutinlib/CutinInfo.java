@@ -8,6 +8,7 @@ public class CutinInfo {
 	public final static String ACTION_PICK_CUTIN ="com.garlicg.cutin.action.PICK";
 	public final static String DATA_ACTION_NAME ="action_name";
 	public final static String DATA_CUTIN_NAME ="cutin_name";
+	public final static String DATA_CUTIN_ID ="cutin_id";
 	
 	/**
 	 *  It is just utility for returning Intent to  CUT-IN Manager. eq.<blockquote>
@@ -23,6 +24,7 @@ public class CutinInfo {
 		Intent intent = new Intent();
 		intent.putExtra(DATA_ACTION_NAME, cutinItem.serviceClass.getName());
 		intent.putExtra(DATA_CUTIN_NAME, cutinItem.cutinName);
+		intent.putExtra(DATA_CUTIN_ID, cutinItem.cutinId);
 		return intent;
 	}
 }

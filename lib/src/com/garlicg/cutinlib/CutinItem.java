@@ -4,6 +4,7 @@ package com.garlicg.cutinlib;
 public class CutinItem {
 	public Class<? extends CutinService> serviceClass;
 	public String cutinName;
+	public int cutinId = 0;
 
 	/**
 	 * Official CUT-IN app uses the serviceClass as identifying for service
