@@ -11,7 +11,7 @@ CUT-IN Material is based on [CUT-IN Manager](https://play.google.com/store/apps/
  * External power is connected.
  * External power os disconnected.
  
-So it is easy to make apps. You just need to write animation or some function if you have your own contents.
+It is easy to make apps, You just need to write animation or some execution.
 
 If you have made an Material app , please message me. CUT-IN Manager have own random advertising area for CUT-IN Materials. It is free and will promote your apps.
 
