@@ -57,7 +57,7 @@ public class SimpleCutinScreen{
 				Object item = arg0.getItemAtPosition(arg2);
 				if(item instanceof CutinItem){
 					CutinItem ci = (CutinItem)item;
-					mDemo.play(ci.serviceClass);
+					mDemo.play(ci.serviceClass , ci.cutinId);
 				}
 				else if(arg2 == 0 && mGetView != null){
 					Intent intent = new Intent(
