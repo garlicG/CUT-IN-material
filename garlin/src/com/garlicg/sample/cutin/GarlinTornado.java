@@ -58,7 +58,7 @@ public class GarlinTornado extends CutinService {
 			int centerY = mImage.getHeight()/2;
 			AnimationSet tornado = new AnimationSet(false);
 			// in
-			RotateAnimation rotateIn = new RotateAnimation(0, 1080 , centerX , centerY);
+			RotateAnimation rotateIn = new RotateAnimation(0, 1170 , centerX , centerY);
 			rotateIn.setDuration(600);
 			tornado.addAnimation(rotateIn);
 			
@@ -67,9 +67,13 @@ public class GarlinTornado extends CutinService {
 			scale.setDuration(600);
 			scale.setStartOffset(600);
 			tornado.addAnimation(scale);
+			RotateAnimation rotateMain = new RotateAnimation(90f, -90f, centerX, centerY);
+			rotateMain.setDuration(600);
+			rotateMain.setStartOffset(600);
+			tornado.addAnimation(rotateMain);
 			
 			// out
-			RotateAnimation rotateOut = new RotateAnimation(0, 1080 , mImage.getWidth()/2 , mImage.getHeight()/2);
+			RotateAnimation rotateOut = new RotateAnimation(0, -1080 , mImage.getWidth()/2 , mImage.getHeight()/2);
 			rotateOut.setDuration(600);
 			rotateOut.setStartOffset(1200);
 			tornado.addAnimation(rotateOut);
@@ -100,7 +104,7 @@ public class GarlinTornado extends CutinService {
 		// for 4.x
 		else{
 			// in
-			ValueAnimator rotateIn = ObjectAnimator.ofFloat(mImage,ImageView.ROTATION,1080f);
+			ValueAnimator rotateIn = ObjectAnimator.ofFloat(mImage,ImageView.ROTATION,1170f);
 			rotateIn.setDuration(600);
 			
 			// scale up
@@ -111,7 +115,11 @@ public class GarlinTornado extends CutinService {
 			ValueAnimator scaleAnimY = ObjectAnimator.ofFloat(mImage, ImageView.SCALE_Y, 1.5f);
 			scaleAnimY.setDuration(600);
 			scaleAnimY.setInterpolator(di);
-			ValueAnimator rotateOut = ObjectAnimator.ofFloat(mImage,ImageView.ROTATION,2160f);
+			ValueAnimator rotateMain = ObjectAnimator.ofFloat(mImage,ImageView.ROTATION,990f);
+			rotateMain.setDuration(600);
+			
+			// out
+			ValueAnimator rotateOut = ObjectAnimator.ofFloat(mImage,ImageView.ROTATION,0f);
 			rotateOut.setDuration(600);
 			ValueAnimator fadeOut = ObjectAnimator.ofFloat(mImage,ImageView.ALPHA,0.0f);
 			fadeOut.setDuration(600);
@@ -119,6 +127,7 @@ public class GarlinTornado extends CutinService {
 			AnimatorSet tornado = new AnimatorSet();
 			tornado.play(rotateIn).before(scaleAnimX);
 			tornado.play(scaleAnimX).with(scaleAnimY);
+			tornado.play(scaleAnimX).with(rotateMain);
 			tornado.play(rotateOut).after(scaleAnimX);
 			tornado.play(rotateOut).with(fadeOut);
 			
