@@ -3,7 +3,6 @@ package com.garlicg.cutinlib;
 
 import android.content.Intent;
 
-
 public class CutinInfo {
 	public final static String ACTION_PICK_CUTIN ="com.garlicg.cutin.action.PICK";
 	public final static String DATA_ACTION_NAME ="action_name";
@@ -11,7 +10,8 @@ public class CutinInfo {
 	public final static String DATA_CUTIN_ID ="cutin_id";
 	
 	/**
-	 *  It is just utility for returning Intent to  CUT-IN Manager. eq.<blockquote>
+	 *  It is utility method for returning Intent to CUT-IN Manager.<br>
+	 *   eq.<blockquote>
 	 *   CutinItem item = new CutinItem(CutinService.class , "SAMPLE 1");<br>
 	 *   Intent intent = CutinInfo.buildPickedIntent(item);<br>
 	 *   setResult(RESULT_OK , intent);<br>
