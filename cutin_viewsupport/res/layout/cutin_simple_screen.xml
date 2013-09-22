@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/__cutin_screen_background"
+    >
+
+    <ListView
+        android:id="@+id/__cutin_simple_ListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" 
+        android:divider="@null"
+        android:listSelector="@android:color/transparent"
+        android:scrollingCache="false"
+        />
+    
+    <ViewStub 
+        android:id="@+id/__cutin_simple_PickerFrame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout="@layout/cutin_bottom_frame"
+        />
+    
+</LinearLayout>
