@@ -1,28 +1,38 @@
-CUT-IN material
+CutIn Material
 ---
 
-What is CUT-IN? It is effects on your phone, like in games but not in games. Try out the [sample app](https://play.google.com/store/apps/details?id=cutin.sample) on the Google Play.
+What is CutIn? It is effects on your phone, like in games but not in games. Try out the [sample app](https://play.google.com/store/apps/details?id=cutin.sample) on the Google Play.
 
 ![garlin_padado](garlin_parado.png)
 
-CUT-IN Material is based on [CUT-IN Manager](https://play.google.com/store/apps/details?id=com.garlicg.cutin) app. CUT-IN Manger call Materials at the follow cases:
+CutIn Material is based on [CutIn Manager](https://play.google.com/store/apps/details?id=com.garlicg.cutin) app. CutIn Manger call Materials at the follow cases:
 
  * Screen turns on.
  * External power is connected.
- * External power os disconnected.
+ * Wired headset plugged
+ * The date changed
+ * Indicated low battery condition
  
-It is easy to make apps, You just need to write animation or some execution.
-
-If you have made an Material app , please message me. CUT-IN Manager have own random advertising area for CUT-IN Materials. It is free and will promote your apps.
+If you have made an Material app , please message me. CutIn Manager have own random advertising area for CutIn Materials. It is free and will promote your apps.
 
 GarlicG : garlicg@gmail.com
+
+Directory
+---
+| name | description |
+|---|---|
+| cutin-connector.jar | Core library. |
+| lib/ | Source code of `cutin-connector.jar`. |
+| lib-viewsupport/ | AndroidLibraryProject for using default simple layout. It is include cutin-connecor. |
+| sample/ | A Sample project using `lib-viewsupport/` |
+| garlin/ | A Sample project for general user. It needs [v7 appcompat library](http://developer.android.com/tools/support-library/index.html) as Android library project.|
 
 Quick Start
 ---
 
-For a working implementation of this project , add the `lib/` as the AndroidLibraryProject and see the `sample/` folder.
+For a working implementation of this project , add the `lib-viewsupport/` as the AndroidLibraryProject and see the `sample/` folder.
 
-1. Create a class for showing CUT-IN extends CutinService.
+1. Create a class for showing CutIn extends CutinService.
 
  |return|methods|	description|
  |---|---|---|
@@ -70,7 +80,7 @@ CutinService
     </service>
 ```
 
-Intent from CUT-IN Manager
+Intent from CutIn Manager
 ---
 `onCreate` in your `Activity`.
 ```java
@@ -80,7 +90,7 @@ Intent from CUT-IN Manager
 		}
 ```
 
-Return Intent to CUT-IN Manager
+Return Intent to CutIn Manager
 ---
 Somewhere to finish in your `Activity`.
 ```java
@@ -89,11 +99,6 @@ Somewhere to finish in your `Activity`.
 		setResult(RESULT_OK , intent);
 		finish();
 ```
-
-
-Garlin
----
-`/garlin` is sample project for general user. Also it is sample of `minSdkVersion = 7`. It needs [v7 appcompat library](http://developer.android.com/tools/support-library/index.html) as Android library project.
 
 
 License
