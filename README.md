@@ -63,15 +63,12 @@ Activity
 
 CutinService
 ```xml
-    <service
-        android:name="(your)package.CutinServiceClassName"
-        android:process=".(your)cutinname" >
+    <service android:name="(your)package.CutinServiceClassName">
         <intent-filter>
             <action android:name="(your)package.CutinServiceClassName" />
         </intent-filter>
     </service>
 ```
-`android:process` must start .(dot) charactor.
 
 Intent from CUT-IN Manager
 ---
@@ -93,9 +90,6 @@ Somewhere to finish in your `Activity`.
 		finish();
 ```
 
-Debug
----
-If logcat do not show logs, remove `android:process` defination of CutinService in `AndroidManifest.xml`.
 
 Garlin
 ---
