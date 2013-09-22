@@ -23,7 +23,7 @@ Directory
 |---|---|
 | cutin-connector.jar | Core library. |
 | lib/ | Source code of `cutin-connector.jar`. |
-| lib-viewsupport/ | AndroidLibraryProject for using default simple layout. It is include cutin-connecor. |
+| lib-viewsupport/ | AndroidLibraryProject for using default simple layout. It is include `cutin-connecor.jar`. |
 | sample/ | A Sample project using `lib-viewsupport/` |
 | garlin/ | A Sample project for general user. It needs [v7 appcompat library](http://developer.android.com/tools/support-library/index.html) as Android library project.|
 
