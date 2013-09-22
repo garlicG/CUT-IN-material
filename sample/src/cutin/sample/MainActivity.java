@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.garlicg.cutinlib.CutinItem;
-import com.garlicg.cutinlib.util.SimpleCutinScreen;
+import com.garlicg.cutinlib.viewsupport.SimpleCutinScreen;
 
 public class MainActivity extends Activity implements SimpleCutinScreen.PickListener{
 	private SimpleCutinScreen mScreen;
