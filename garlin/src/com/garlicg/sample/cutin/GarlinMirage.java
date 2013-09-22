@@ -1,5 +1,6 @@
 package com.garlicg.sample.cutin;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -10,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +19,12 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 
 import com.garlicg.cutinlib.CutinService;
+import com.garlicg.sample.cutin.util.Logger;
 
 public class GarlinMirage extends CutinService {
 	
 	private MirageView mView;
+	private MediaPlayer mPlayer;
 	
 	@Override
 	protected View create() {
@@ -30,6 +34,17 @@ public class GarlinMirage extends CutinService {
 		@SuppressWarnings("deprecation")
 		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
 		layout.addView(mView, 0, p);
+		
+		if(Prefs.getSound(this)){
+			mPlayer = MediaPlayer.create(this, R.raw.mirage);
+			try {
+				mPlayer.prepare();
+			} catch (IllegalStateException e) {
+				Logger.e("GarlinMirage", e.toString());
+			} catch (IOException e) {
+				Logger.e("GarlinMirage", e.toString());
+			}
+		}
 
 		return layout;
 	}
@@ -44,11 +59,30 @@ public class GarlinMirage extends CutinService {
 		});
 		
 		mView.startMirage();
+		if(mPlayer != null){
+			try{
+				mPlayer.start();
+			}catch(IllegalStateException e){
+				Logger.e("GarlinMirage", e.toString());
+			}
+		}
+		
 	}
 	
 	@Override
 	protected void destroy() {
 		mView.onDestroy();
+		if(mPlayer != null){
+			if(mPlayer.isPlaying()){
+			try{
+				mPlayer.stop();
+			}catch(IllegalStateException e){
+				Logger.e("GarlicTornado", e.toString());
+			}
+			}
+			mPlayer.reset();
+			mPlayer.release();
+		}
 	}
 	
 	

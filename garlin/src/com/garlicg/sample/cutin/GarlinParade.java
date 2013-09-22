@@ -1,5 +1,6 @@
 package com.garlicg.sample.cutin;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -10,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +19,11 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 
 import com.garlicg.cutinlib.CutinService;
+import com.garlicg.sample.cutin.util.Logger;
 
 public class GarlinParade extends CutinService {
 	private ParadeView mView;
+	private MediaPlayer mPlayer;
 	
 	@Override
 	protected View create() {
@@ -28,6 +32,18 @@ public class GarlinParade extends CutinService {
 		@SuppressWarnings("deprecation")
 		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
 		layout.addView(mView, 0, p);
+	
+		if(Prefs.getSound(this)){
+			mPlayer = MediaPlayer.create(this, R.raw.parade);
+			try {
+				mPlayer.prepare();
+			} catch (IllegalStateException e) {
+				Logger.e("GarlinParade",e.toString());
+			} catch (IOException e) {
+				Logger.e("GarlinParade",e.toString());
+			}
+		}
+		
 		return layout;
 	}
 
@@ -40,11 +56,31 @@ public class GarlinParade extends CutinService {
 			}
 		});
 		mView.startParade();
+		
+		if(mPlayer != null){
+			try{
+				mPlayer.start();
+			}catch(IllegalStateException e){
+				Logger.e("GarlicParade", e.toString());
+			}
+		}
 	}
 
 	@Override
 	protected void destroy() {
 		mView.onDestroy();
+		
+		if(mPlayer != null){
+			if(mPlayer.isPlaying()){
+			try{
+				mPlayer.stop();
+			}catch(IllegalStateException e){
+				Logger.e("GarlicParade", e.toString());
+			}
+			}
+			mPlayer.reset();
+			mPlayer.release();
+		}
 	}
 	
 	

@@ -6,5 +6,6 @@
     <string name="garlin_mirage">がーりんミラージュ</string>
     <string name="garlin_parade">がーりんパレード</string>
     <string name="error_no_choice">選択されていません</string>
+    <string name="sound">音設定</string>
 
 </resources>

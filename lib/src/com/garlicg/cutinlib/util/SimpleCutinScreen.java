@@ -2,26 +2,33 @@ package com.garlicg.cutinlib.util;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
-import com.garlicg.cutinlib.CutinInfo;
-import com.garlicg.cutinlib.CutinItem;
-import com.garlicg.cutinlib.R;
-import com.garlicg.cutinlib.R.id;
-import com.garlicg.cutinlib.R.layout;
-
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ServiceInfo;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.garlicg.cutinlib.CutinInfo;
+import com.garlicg.cutinlib.CutinItem;
+import com.garlicg.cutinlib.CutinService;
+import com.garlicg.cutinlib.R;
 
 public class SimpleCutinScreen{
 	public final static int STATE_VIEW = 0;
@@ -72,7 +79,7 @@ public class SimpleCutinScreen{
 			mListView.addHeaderView(newPaddingView(context));
 		}
 		else{
-			mGetView = LayoutInflater.from(context).inflate(R.layout.cutin_get_manager,null);
+//			mGetView = LayoutInflater.from(context).inflate(R.layout.cutin_get_manager,null);
 			mListView.addHeaderView(mGetView);
 		}
 		mListView.addFooterView(newPaddingView(context));
@@ -128,14 +135,14 @@ public class SimpleCutinScreen{
 		
 		// launched from launcher ,etc
 		if(mState == STATE_VIEW){
-			ArrayAdapter<CutinItem> adapter = new ArrayAdapter<CutinItem>(mViewParent.getContext(), R.layout.cutin_list_item_1,android.R.id.text1, list);
+			SimpleCutinAdapter adapter = new SimpleCutinAdapter(mViewParent.getContext(), R.layout.cutin_list_item_1,list);
 			mListView.setAdapter(adapter);
 		}
 		
 		// launched from manage app
 		else if(mState == STATE_PICK){
 			// Set ListView with SingleChoiceMode.
-			ArrayAdapter<CutinItem> adapter = new ArrayAdapter<CutinItem>(mViewParent.getContext(), R.layout.cutin_list_item_single_choice, android.R.id.text1,list);
+			SimpleCutinAdapter adapter = new SimpleCutinAdapter(mViewParent.getContext(), R.layout.cutin_list_item_single_choice,list);
 			mListView.setAdapter(adapter);
 			mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 			
@@ -174,4 +181,51 @@ public class SimpleCutinScreen{
 			});
 		}
 	}
+	
+	private class SimpleCutinAdapter extends ArrayAdapter<CutinItem>{
+		private Drawable[] mDrawables;
+		
+		public SimpleCutinAdapter(Context context, int resource,
+				List<CutinItem> objects) {
+			super(context, resource, objects);
+			if(objects != null){
+				mDrawables = new Drawable[objects.size()];
+				int size = mDrawables.length;
+				PackageManager pm = context.getPackageManager();
+				for(int i = 0 ; i < size ; i++){
+					mDrawables[i] = getServiceIcon(objects.get(i).serviceClass, pm);
+				}
+			}
+		}
+		
+		private Drawable getServiceIcon(Class<? extends CutinService> serviceClass ,PackageManager pm){
+			Drawable icon = null;
+			if(serviceClass != null){
+				try {
+					ServiceInfo si = pm.getServiceInfo(new ComponentName(getContext(), serviceClass), 0);
+					icon = getContext().getResources().getDrawable(si.icon);
+					icon.setBounds(0, 0, 48, 48);
+				} catch (NameNotFoundException e) {
+					Log.e("tes", e.toString());
+				}
+			}
+			Log.v("tes", "" + icon);
+			return icon;
+		}
+		
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			TextView view = (TextView)super.getView(position, convertView, parent);
+			if(mDrawables[position] != null){
+				Log.v("tes", "icon not null");
+				view.setCompoundDrawables(mDrawables[position],null, null, null);
+			}
+			else{
+				Log.v("tes", "icon is null");
+				view.setCompoundDrawables(null,null, null, null);
+			}
+			return view;
+		}
+	}
+	
 }

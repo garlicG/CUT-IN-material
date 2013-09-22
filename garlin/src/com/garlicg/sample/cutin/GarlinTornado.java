@@ -1,5 +1,7 @@
 package com.garlicg.sample.cutin;
 
+import java.io.IOException;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
@@ -7,6 +9,7 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,15 +23,28 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 
 import com.garlicg.cutinlib.CutinService;
+import com.garlicg.sample.cutin.util.Logger;
 
 public class GarlinTornado extends CutinService {
 	
-	ImageView mImage;
+	private ImageView mImage;
+	private MediaPlayer mPlayer;
 	
 	@Override
 	public View create() {
 		View layout = LayoutInflater.from(this).inflate(R.layout.garlic_tornado, null);
 		mImage = (ImageView)layout.findViewById(R.id.garlic_tornado_Image);
+		if(Prefs.getSound(this)){
+			mPlayer = MediaPlayer.create(this, R.raw.tornado);
+			try {
+				mPlayer.prepare();
+			} catch (IllegalStateException e) {
+				Logger.e("GarlinTornado", e.toString());
+			} catch (IOException e) {
+				Logger.e("GarlinTornado", e.toString());
+			}
+		}
+		
 		return layout;
 	}
 
@@ -116,10 +132,27 @@ public class GarlinTornado extends CutinService {
 			tornado.start();
 		}
 		
+		if(mPlayer != null){
+			try{
+				mPlayer.start();
+			}catch(IllegalStateException e){
+				Logger.e("GarlicTornado", e.toString());
+			}
+		}
 	}
 
 	@Override
 	protected void destroy() {
-		// none
+		if(mPlayer != null){
+			if(mPlayer.isPlaying()){
+			try{
+				mPlayer.stop();
+			}catch(IllegalStateException e){
+				Logger.e("GarlicTornado", e.toString());
+			}
+			}
+			mPlayer.reset();
+			mPlayer.release();
+		}
 	}
 }
