@@ -1,4 +1,4 @@
-package com.garlicg.cutinlib.util;
+package com.garlicg.cutinlib;
 
 import android.content.ComponentName;
 import android.content.Context;

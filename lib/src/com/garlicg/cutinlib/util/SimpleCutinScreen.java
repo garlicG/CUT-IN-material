@@ -19,6 +19,7 @@ import android.widget.ListView;
 
 import com.garlicg.cutinlib.CutinInfo;
 import com.garlicg.cutinlib.CutinItem;
+import com.garlicg.cutinlib.Demo;
 import com.garlicg.cutinlib.R;
 
 public class SimpleCutinScreen{
