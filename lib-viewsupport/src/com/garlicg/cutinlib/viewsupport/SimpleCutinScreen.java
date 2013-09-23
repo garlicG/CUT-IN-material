@@ -211,7 +211,9 @@ public class SimpleCutinScreen{
 					int bond = (int)(res.getDisplayMetrics().density * 48 + 0.5f);
 					icon.setBounds(0, 0, bond,bond );
 				} catch (NameNotFoundException e) {
+				} catch (Resources.NotFoundException e) {
 				}
+				
 			}
 			return icon;
 		}
