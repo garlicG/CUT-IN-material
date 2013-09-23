@@ -14,7 +14,6 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +27,7 @@ import android.widget.TextView;
 import com.garlicg.cutinlib.CutinInfo;
 import com.garlicg.cutinlib.CutinItem;
 import com.garlicg.cutinlib.CutinService;
+import com.garlicg.cutinlib.Demo;
 
 public class SimpleCutinScreen{
 	public final static int STATE_VIEW = 0;
