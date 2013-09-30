@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <!-- base color -->
-    <color name="__cutin_hightlight">#AA33b5e5</color>
-    <color name="__cutin_screen_background">#FFD0D0D0</color>
-    <color name="__cutin_card_background">#FFF0F0F0</color>
-    <color name="__cutin_card_notice_background">#FFFFFFE0</color>
-</resources>
