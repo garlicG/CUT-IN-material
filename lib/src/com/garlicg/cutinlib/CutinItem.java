@@ -4,7 +4,7 @@ package com.garlicg.cutinlib;
 public class CutinItem {
 	public Class<? extends CutinService> serviceClass;
 	public String cutinName;
-	public int cutinId = -1;
+	public long cutinId = -1;
 
 	/**
 	 * Official CUT-IN app uses the serviceClass as identifying for service
@@ -34,7 +34,7 @@ public class CutinItem {
 	 * @param cutinId: optional cutIn id. default is -1.
 	 */
 	public CutinItem(Class<? extends CutinService> serviceClass,
-			String cutinName, int cutinId) {
+			String cutinName, long cutinId) {
 		this.serviceClass = serviceClass;
 		this.cutinName = cutinName;
 		this.cutinId = cutinId;
