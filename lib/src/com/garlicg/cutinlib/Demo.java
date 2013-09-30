@@ -7,6 +7,9 @@ import android.content.Intent;
 import com.garlicg.cutinlib.CutinInfo;
 import com.garlicg.cutinlib.CutinService;
 
+/**
+ * Call cutinservice.
+ */
 public class Demo {
 	private Intent mCutinIntent;
 	private Context mContext;
@@ -14,11 +17,15 @@ public class Demo {
 		mContext = context;
 	}
 
-	public ComponentName play(Class<? extends CutinService> serviceClass , int cutinId) {
+	/**
+	 * Play cutin service. If there are playing cutin , stop it and new cutin service start.
+	 * @param serviceClass
+	 * @param cutinId
+	 * @return
+	 */
+	public ComponentName play(Class<? extends CutinService> serviceClass , long cutinId) {
 		if (mCutinIntent != null) {
-//			if(!mCutinIntent.getComponent().getClassName().equals(serviceClass.getName())){
 			mContext.stopService(mCutinIntent);
-//			}
 		}
 		mCutinIntent = new Intent(mContext, serviceClass);
 		mCutinIntent.putExtra(CutinInfo.DATA_CUTIN_ID, cutinId);
