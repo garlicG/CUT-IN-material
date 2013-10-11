@@ -23,12 +23,33 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="cutin.sample.SimplePickedActivity"
+            android:label="SimplePickedActivity" >
             <intent-filter>
                 <action android:name="com.garlicg.cutin.action.PICK" />
-
                 <category android:name="com.garlicg.cutin.category.RESOURCE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="cutin.sample.IconActivity"
+            android:label="IconActivity" >
+        </activity>
+        <activity
+            android:name="cutin.sample.ParamActivity"
+            android:label="ParamActivity" >
+        </activity>
+        <activity
+            android:name="cutin.sample.PreferenceActivity"
+            android:label="PreferenceActivity" >
+        </activity>
+        <activity
+            android:name="cutin.sample.AnimationsActivity"
+            android:label="AnimationsActivity" >
         </activity>
 
         <service
