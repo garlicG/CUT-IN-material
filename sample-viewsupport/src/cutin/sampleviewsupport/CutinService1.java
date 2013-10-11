@@ -1,4 +1,4 @@
-package cutin.sample;
+package cutin.sampleviewsupport;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
