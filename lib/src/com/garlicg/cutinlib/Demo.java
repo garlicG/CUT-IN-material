@@ -20,6 +20,19 @@ public class Demo {
 	/**
 	 * Play cutin service. If there are playing cutin , stop it and new cutin service start.
 	 * @param serviceClass
+	 * @return
+	 */
+	public ComponentName play(Class<? extends CutinService> serviceClass) {
+		if (mCutinIntent != null) {
+			mContext.stopService(mCutinIntent);
+		}
+		mCutinIntent = new Intent(mContext, serviceClass);
+		return mContext.startService(mCutinIntent);
+	}
+	
+	/**
+	 * Play cutin service. If there are playing cutin , stop it and new cutin service start.
+	 * @param serviceClass
 	 * @param cutinId
 	 * @return
 	 */
