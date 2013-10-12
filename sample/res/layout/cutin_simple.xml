@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <View
+        android:id="@+id/cutin_simple_view"
+        android:layout_width="192dp"
+        android:layout_height="192dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/default_cutin" />
+    <TextView
+        android:id="@+id/cutin_default_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="SIMPLE"
+        android:textColor="#333"
+        android:textSize="32dp" />
+
+</RelativeLayout>
