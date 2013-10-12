@@ -3,8 +3,12 @@ package cutin.sample;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -58,15 +62,20 @@ public class MainActivity extends Activity {
 	}
 	
 	private class Data{
-		private String name;
+		private CharSequence name = "";
 		private Class<?extends Activity> activity;
 		private Data(Class<?extends Activity> activity){
 			this.activity = activity;
-			name = activity.getSimpleName();
+			ComponentName cn = new ComponentName(getApplicationContext(), activity);
+			try {
+				name = getPackageManager().getActivityInfo(cn, PackageManager.GET_META_DATA).loadLabel(getPackageManager());
+			} catch (NameNotFoundException e) {
+				Log.e("MainActivity", e.toString());
+			}
 		}
 		@Override
 		public String toString() {
-			return name;
+			return name.toString();
 		}
 	}
 }

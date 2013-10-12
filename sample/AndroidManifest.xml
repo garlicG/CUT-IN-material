@@ -24,17 +24,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name="cutin.sample.SimplePickedActivity"
-            android:label="SimplePickedActivity" >
+            android:label="SimplePicked" >
             <intent-filter>
                 <action android:name="com.garlicg.cutin.action.PICK" />
+
                 <category android:name="com.garlicg.cutin.category.RESOURCE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
+
+        <service
+            android:name="cutin.sample.SimpleCutIn"
+            android:process=".simplecutin" >
+            <intent-filter>
+                <action android:name="cutin.sample.SimpleCutIn" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name="cutin.sample.IconActivity"
             android:label="IconActivity" >
@@ -76,4 +84,3 @@
     </application>
 
 </manifest>
-
