@@ -8,7 +8,7 @@
     <string name="get_on_google_play_button">ダウンロード</string>
     <string name="launch_cutin_manager">カットインマネージャーを起動</string>
     <string name="simplepickedactivity_desctiption">SimplePickedはカットインマネージャーからの呼び出しに応答する最もシンプルなサンプルです。カットインマネージャーを起動し、SimplePickedを設定してください。</string>
-    <string name="simplepickedactivity_message">OKボタンを押すとカットインマネージャーにカットインを登録します。</string>
+    <string name="simplepickedactivity_message">OKボタンを押すとカットインマネージャーにシンプルなカットインを登録します。</string>
     <string name="iconicppickedactivity_desctiption">カットインマネージャーでは通常、登録されたアプリのアプリアイコンを表示しますが、カットインクラス毎にアイコンを定義することもできます。</string>
     <string name="iconicppickedactivity_message">カットインマネージャーにオレンジ色のアイコンを表示させます。</string>
     <string name="cutinidactivity_desctiption">カットインマネージャーにカットインIDを登録することができます。</string>
