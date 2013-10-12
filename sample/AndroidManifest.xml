@@ -100,8 +100,17 @@
         </service>
 
         <activity
+            android:name="cutin.sample.CustomDemoActivity"
+            android:label="CustomDemo" >
+        </activity>
+
+        <service
+            android:name="cutin.sample.CustomDemoCutIn"
+            android:process=".customdemocutin" />
+
+        <activity
             android:name="cutin.sample.AnimationsActivity"
-            android:label="AnimationsActivity" >
+            android:label="Animations" >
         </activity>
     </application>
 

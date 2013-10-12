@@ -7,13 +7,13 @@
     <string name="get_on_google_play">カットインマネージャーと連携するサンプルです。</string>
     <string name="get_on_google_play_button">ダウンロード</string>
     <string name="launch_cutin_manager">カットインマネージャーを起動</string>
-    <string name="simplepickedactivity_desctiption">SimplePickedはカットインマネージャーからの呼び出しに応答する最もシンプルなサンプルです。カットインマネージャーを起動し、SimplePickedを設定してください。</string>
+    <string name="simplepickedactivity_desctiption">SimplePickedはカットインマネージャーからの呼び出しに応答する最もシンプルなサンプルです。カットインマネージャーを起動し、SimplePickedを選択してください。</string>
     <string name="simplepickedactivity_message">OKボタンを押すとカットインマネージャーにシンプルなカットインを登録します。</string>
-    <string name="iconicppickedactivity_desctiption">カットインマネージャーでは通常、登録されたアプリのアプリアイコンを表示しますが、カットインクラス毎にアイコンを定義することもできます。アイコンはAndroidManifest.xmlのserviceのiconに定義されたものが参照されます。</string>
+    <string name="iconicppickedactivity_desctiption">カットインマネージャーでは通常、登録されたアプリのアプリアイコンを表示しますが、カットインクラス毎にアイコンを定義することもできます。アイコンはAndroidManifest.xmlのserviceのiconに定義されたものが参照されます。カットインマネージャーを起動し、IconicPickedを選択してください。</string>
     <string name="iconicppickedactivity_message">カットインマネージャーにオレンジ色のアイコンを表示させます。</string>
-    <string name="cutinidactivity_desctiption">カットインマネージャーにカットインIDを登録することができます。</string>
+    <string name="cutinidactivity_desctiption">カットインマネージャーにカットインIDを登録することができます。カットインマネージャーを起動し、CutInIdを選択してください。</string>
     <string name="cutinidactivity_message">カットインマネージャーにカットインIDを登録します。</string>
-    <string name="preferenceactivity_desctiption">設定値を参照したカットインを表示します。Preferenceやパッケージ内DBを使用する場合は、AndroidManifest.xmlでserviceのprocessを定義しないでください。</string>
+    <string name="preferenceactivity_desctiption">設定値を参照したカットインを表示します。Preferenceやパッケージ内DBを使用する場合は、AndroidManifest.xmlでserviceのprocessを定義しないでください。カットインマネージャーを起動し、Preferenceを選択してください。</string>
     <string name="preferenceactivity_message">カットインマネージャーから呼び出された際に、このアプリのPreferenceから情報を参照してカットインを表示します。</string>
     <string name="customdemoactivity_desctiption">Intentを使用して独自のデモ再生をします。</string>
     <string name="demo">デモ再生</string>
