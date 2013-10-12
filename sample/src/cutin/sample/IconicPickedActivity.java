@@ -14,7 +14,7 @@ import com.garlicg.cutinlib.Demo;
 
 /**
  * It is possible to define icon to the service.
- * See AndroidManifest.xml
+ * See the AndroidManifest.xml
           <service
             android:name="cutin.sample.IconicCutIn"
             android:icon="@drawable/ic_orange"  <-- this!!   
@@ -46,7 +46,7 @@ public class IconicPickedActivity extends Activity{
 			okButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					// Register SimpleCutIn to CutIn Manager.
+					// Register IconicCutIn to CutIn Manager.
 					CutinItem item = new CutinItem(IconicCutIn.class, "IconicPicked");
 					Intent intent = CutinInfo.buildPickedIntent(item);
 					setResult(RESULT_OK , intent);
