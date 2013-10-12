@@ -8,6 +8,8 @@
     <string name="get_on_google_play_button">Get on GooglePlay</string>
     <string name="launch_cutin_manager">Launch CutIn Manager</string>
     <string name="simplepickedactivity_desctiption">SimplePickedActivity respond to the call from CutInManager. And register SimpleCutIn Class as the playng CutIn.</string>
+    <string name="iconicppickedactivity_desctiption">カットインマネージャーでは登録されたアプリのアプリアイコンを表示しますが、カットイン毎にアイコンを表示させることもできます。</string>
+    <string name="iconicppickedactivity_message">カットインマネージャーにオレンジ色のアイコンを表示させます。</string>
     <string name="demo">DEMO</string>
 
 </resources>

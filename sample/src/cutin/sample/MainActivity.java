@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
 		
 		ArrayList<Data> list = new ArrayList<Data>();
 		list.add(new Data(SimplePickedActivity.class));
-		list.add(new Data(IconActivity.class));
+		list.add(new Data(IconicPickedActivity.class));
 		list.add(new Data(ParamActivity.class));
 		list.add(new Data(PreferenceActivity.class));
 		list.add(new Data(AnimationsActivity.class));

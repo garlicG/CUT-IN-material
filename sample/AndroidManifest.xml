@@ -44,9 +44,25 @@
         </service>
 
         <activity
-            android:name="cutin.sample.IconActivity"
-            android:label="IconActivity" >
+            android:name="cutin.sample.IconicPickedActivity"
+            android:label="IconicPicked" >
+            <intent-filter>
+                <action android:name="com.garlicg.cutin.action.PICK" />
+
+                <category android:name="com.garlicg.cutin.category.RESOURCE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
+
+        <service
+            android:name="cutin.sample.IconicCutIn"
+            android:icon="@drawable/ic_orange"
+            android:process=".iconiccutin" >
+            <intent-filter>
+                <action android:name="cutin.sample.IconicCutIn" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name="cutin.sample.ParamActivity"
             android:label="ParamActivity" >

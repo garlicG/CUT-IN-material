@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.garlicg.cutinlib.CutinService;
 
-public class SimpleCutIn extends CutinService{
+public class IconicCutIn extends CutinService{
 	private View mView;
 	
 	@Override
@@ -19,7 +19,7 @@ public class SimpleCutIn extends CutinService{
 		View layout = inflater.inflate(R.layout.cutin_default, null);
 		mView = layout.findViewById(R.id.cutin_default_view);
 		TextView textView = (TextView)layout.findViewById(R.id.cutin_default_text);
-		textView.setText("SimpleCutIn");
+		textView.setText("IconicCutIn");
 		return layout;
 	}
 

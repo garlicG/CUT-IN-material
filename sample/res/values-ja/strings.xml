@@ -4,11 +4,12 @@
     <string name="app_name">CutinSample</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="get_on_google_play">SimplePickedはカットインマネージャーと連携するサンプルです。</string>
+    <string name="get_on_google_play">カットインマネージャーと連携するサンプルです。</string>
     <string name="get_on_google_play_button">ダウンロード</string>
     <string name="launch_cutin_manager">カットインマネージャーを起動</string>
     <string name="simplepickedactivity_desctiption">SimplePickedはカットインマネージャーからの呼び出しに応答する最もシンプルなサンプルです。カットインマネージャーを起動し、SimplePickedを設定してください。</string>
+    <string name="iconicppickedactivity_desctiption">カットインマネージャーでは登録されたアプリのアプリアイコンを表示しますが、カットイン毎にアイコンを表示させることもできます。</string>
+    <string name="iconicppickedactivity_message">カットインマネージャーにオレンジ色のアイコンを表示させます。</string>
     <string name="demo">デモ再生</string>
-    
 
 </resources>

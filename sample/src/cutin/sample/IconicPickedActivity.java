@@ -12,26 +12,33 @@ import com.garlicg.cutinlib.CutinInfo;
 import com.garlicg.cutinlib.CutinItem;
 import com.garlicg.cutinlib.Demo;
 
-public class SimplePickedActivity extends Activity {
-
+/**
+ * It is possible to define icon to the service.
+ * See AndroidManifest.xml
+          <service
+            android:name="cutin.sample.IconicCutIn"
+            android:icon="@drawable/ic_orange"  <-- this!!   
+            android:process=".iconiccutin" >
+ */
+public class IconicPickedActivity extends Activity{
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		Intent intent = getIntent();
 		
 		// launched from CutInManager
 		if (intent != null && !TextUtils.isEmpty(intent.getAction())
 				&& intent.getAction().equals(CutinInfo.ACTION_PICK_CUTIN)) {
 			
-			setContentView(R.layout.activity_simplepicked_picked);
+			setContentView(R.layout.activity_iconicpicked_picked);
 			final Demo demo = new Demo(this);
 			
 			View demoButton = findViewById(R.id.demoButton);
 			demoButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					demo.play(SimpleCutIn.class);
+					demo.play(IconicCutIn.class);
 				}
 			});
 			
@@ -40,7 +47,7 @@ public class SimplePickedActivity extends Activity {
 				@Override
 				public void onClick(View v) {
 					// Register SimpleCutIn to CutIn Manager.
-					CutinItem item = new CutinItem(SimpleCutIn.class, "SimplePicked");
+					CutinItem item = new CutinItem(IconicCutIn.class, "IconicPicked");
 					Intent intent = CutinInfo.buildPickedIntent(item);
 					setResult(RESULT_OK , intent);
 					finish();
@@ -57,9 +64,10 @@ public class SimplePickedActivity extends Activity {
 			});
 		}
 		
+		
 		// launched from MainActivity
 		else {
-			setContentView(R.layout.activity_simplepicked_description);
+			setContentView(R.layout.activity_iconicpicked_description);
 			
 			View getOnGooglePlay = findViewById(R.id.get_on_google_play);
 			getOnGooglePlay.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +88,7 @@ public class SimplePickedActivity extends Activity {
 					if(intent != null){
 						startActivity(intent);
 					}else{
-						Toast.makeText(SimplePickedActivity.this, "Download CutinManager!",Toast.LENGTH_SHORT).show();
+						Toast.makeText(IconicPickedActivity.this, "Download CutinManager!",Toast.LENGTH_SHORT).show();
 					}
 				}
 			});
