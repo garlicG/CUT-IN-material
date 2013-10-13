@@ -112,6 +112,10 @@
             android:name="cutin.sample.AnimationsActivity"
             android:label="Animations" >
         </activity>
+
+        <service
+            android:name="cutin.sample.animation.GLSurfaceViewCutIn"
+            android:process=".glsurfaceview" />
     </application>
 
 </manifest>

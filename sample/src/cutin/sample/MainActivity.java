@@ -2,6 +2,9 @@ package cutin.sample;
 
 import java.util.ArrayList;
 
+import cutin.sample.animation.GLSurfaceViewCutIn;
+
+
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -63,20 +66,20 @@ public class MainActivity extends Activity {
 	}
 	
 	private class Data{
-		private CharSequence name = "";
+		private String name = "";
 		private Class<?extends Activity> activity;
 		private Data(Class<?extends Activity> activity){
 			this.activity = activity;
 			ComponentName cn = new ComponentName(getApplicationContext(), activity);
 			try {
-				name = getPackageManager().getActivityInfo(cn, PackageManager.GET_META_DATA).loadLabel(getPackageManager());
+				name = getPackageManager().getActivityInfo(cn, PackageManager.GET_META_DATA).loadLabel(getPackageManager()).toString();
 			} catch (NameNotFoundException e) {
 				Log.e("MainActivity", e.toString());
 			}
 		}
 		@Override
 		public String toString() {
-			return name.toString();
+			return name;
 		}
 	}
 }
