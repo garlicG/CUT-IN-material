@@ -3,7 +3,7 @@ CutIn Material
 
 What is CutIn? It is effects on your phone, like in games but not in games. Try out the [sample app](https://play.google.com/store/apps/details?id=cutin.sample) on the Google Play.
 
-![garlin_padado](garlin_parado.png)
+![photo_cutin](photo_cutin.png) ![garlin_padado](garlin_parado.png) ![trendszawazawa](trendszawazawa)
 
 CutIn Material is based on [CutIn Manager](https://play.google.com/store/apps/details?id=com.garlicg.cutin) app. CutIn Manger call Materials at the follow cases:
 
