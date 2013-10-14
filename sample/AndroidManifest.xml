@@ -148,6 +148,13 @@
             </intent-filter>
         </service>
         <service
+            android:name="cutin.sample.animation.SurfaceViewCutin"
+            >
+            <intent-filter>
+                <action android:name="cutin.sample.animation.SurfaceViewCutin" />
+            </intent-filter>
+        </service>
+        <service
             android:name="cutin.sample.animation.GLSurfaceViewCutin"
             android:process=".cutin_glsurfaceview" >
             <intent-filter>

@@ -41,6 +41,7 @@ public class AnimationsActivity extends Activity{
 		list.add(new CutinItem(RecursiveAnimationCutin.class , RecursiveAnimationCutin.class.getSimpleName()));
 		list.add(new CutinItem(AnimateDrawableCutin.class , AnimateDrawableCutin.class.getSimpleName()));
 		list.add(new CutinItem(AnimatorCutin.class , AnimatorCutin.class.getSimpleName()));
+		list.add(new CutinItem(SurfaceViewCutin.class , SurfaceViewCutin.class.getSimpleName()));
 		list.add(new CutinItem(GLSurfaceViewCutin.class , GLSurfaceViewCutin.class.getSimpleName()));
 		
 		String action = getIntent().getAction();
