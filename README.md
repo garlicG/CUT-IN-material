@@ -30,7 +30,7 @@ Directory
 CutinService
 ---
 
-Every CutIn is based on `CutinService` class. `CutinService` extends `Service` of Android OS.
+Every CutIn is based on `CutinService` class extends `Service` of Android OS.
 
 1. Abstract methods of `CutinService`.
 
