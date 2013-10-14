@@ -109,13 +109,22 @@
             android:process=".customdemocutin" />
 
         <activity
-            android:name="cutin.sample.AnimationsActivity"
+            android:name="cutin.sample.animation.AnimationsActivity"
             android:label="Animations" >
+            <intent-filter>
+                <action android:name="com.garlicg.cutin.action.PICK" />
+
+                <category android:name="com.garlicg.cutin.category.RESOURCE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
         <service
             android:name="cutin.sample.animation.GLSurfaceViewCutIn"
             android:process=".glsurfaceview" />
+        <service
+            android:name="cutin.sample.animation.AnimateDrawableCutIn"
+            android:process=".animatedrawable" />
     </application>
 
 </manifest>

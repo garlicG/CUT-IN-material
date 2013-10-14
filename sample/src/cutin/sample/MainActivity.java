@@ -2,6 +2,7 @@ package cutin.sample;
 
 import java.util.ArrayList;
 
+import cutin.sample.animation.AnimationsActivity;
 import cutin.sample.animation.GLSurfaceViewCutIn;
 
 

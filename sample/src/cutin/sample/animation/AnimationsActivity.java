@@ -1,4 +1,4 @@
-package cutin.sample;
+package cutin.sample.animation;
 
 import java.util.ArrayList;
 
@@ -10,16 +10,17 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.garlicg.cutinlib.CutinInfo;
 import com.garlicg.cutinlib.CutinService;
 import com.garlicg.cutinlib.Demo;
-
-import cutin.sample.animation.GLSurfaceViewCutIn;
 
 public class AnimationsActivity extends Activity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		String action = getIntent().getAction();
+		final boolean fromCutinManager = action != null && action.equals(CutinInfo.ACTION_PICK_CUTIN);
 		final Demo demo = new Demo(this);
 		
 		ListView listView = new ListView(this);
@@ -36,13 +37,14 @@ public class AnimationsActivity extends Activity{
 		
 		ArrayList<Data> list = new ArrayList<Data>();
 		list.add(new Data(GLSurfaceViewCutIn.class));
-		ArrayAdapter<Data> adapter = new ArrayAdapter<Data>(this, android.R.layout.simple_list_item_1 , list);
+		list.add(new Data(AnimateDrawableCutIn.class));
+		int layoutRes = fromCutinManager ? android.R.layout.simple_list_item_single_choice : android.R.layout.simple_list_item_1;
+		ArrayAdapter<Data> adapter = new ArrayAdapter<Data>(this, layoutRes , list);
 		listView.setAdapter(adapter);
-		
 	}
 	
 	private class Data{
-		private String name = "";
+		private String name;
 		private Class<? extends CutinService> cutinService;
 		private Data(Class<? extends CutinService> cutinService){
 			this.cutinService = cutinService;
