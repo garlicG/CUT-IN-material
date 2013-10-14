@@ -43,6 +43,7 @@ public class AnimationsActivity extends Activity{
 		list.add(new CutinItem(AnimatorCutin.class , AnimatorCutin.class.getSimpleName()));
 		list.add(new CutinItem(SweepCutin.class , SweepCutin.class.getSimpleName()));
 		list.add(new CutinItem(PathEffectsCutin.class , PathEffectsCutin.class.getSimpleName()));
+		list.add(new CutinItem(PatternsCutin.class , PatternsCutin.class.getSimpleName()));
 		list.add(new CutinItem(SurfaceViewCutin.class , SurfaceViewCutin.class.getSimpleName()));
 		list.add(new CutinItem(GLSurfaceViewCutin.class , GLSurfaceViewCutin.class.getSimpleName()));
 		

@@ -179,6 +179,14 @@
                 <action android:name="cutin.sample.animation.PathEffectsCutin" />
             </intent-filter>
         </service>
+        <service
+            android:name="cutin.sample.animation.PatternsCutin"
+            android:process=".cutin_patterns" 
+            >
+            <intent-filter>
+                <action android:name="cutin.sample.animation.PatternsCutin" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
