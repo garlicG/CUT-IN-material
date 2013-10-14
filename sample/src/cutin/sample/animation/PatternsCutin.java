@@ -9,12 +9,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.DrawFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Shader;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.garlicg.cutinlib.CutinService;

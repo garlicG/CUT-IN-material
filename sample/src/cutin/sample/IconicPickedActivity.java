@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.garlicg.cutinlib.CutinInfo;
 import com.garlicg.cutinlib.CutinItem;
-import com.garlicg.cutinlib.Demo;
 
 /**
  * It is possible to define icon to the service.

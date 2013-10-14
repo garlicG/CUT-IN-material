@@ -18,8 +18,6 @@ import com.garlicg.cutinlib.CutinInfo;
 import com.garlicg.cutinlib.CutinItem;
 import com.garlicg.cutinlib.Demo;
 
-import cutin.sample.BuildConfig;
-
 public class AnimationsActivity extends Activity{
 	
 	@Override
