@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CutinSample</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">CutinSamples</string>
     <string name="get_on_google_play">カットインマネージャーと連携するサンプルです。</string>
     <string name="get_on_google_play_button">ダウンロード</string>
     <string name="launch_cutin_manager">カットインマネージャーを起動</string>
     <string name="simplepickedactivity_desctiption">SimplePickedはカットインマネージャーからの呼び出しに応答する最もシンプルなサンプルです。カットインマネージャーを起動し、SimplePickedを選択してください。</string>
     <string name="simplepickedactivity_message">OKボタンを押すとカットインマネージャーにシンプルなカットインを登録します。</string>
     <string name="iconicppickedactivity_desctiption">カットインマネージャーでは通常、登録されたアプリのアプリアイコンを表示しますが、カットインクラス毎にアイコンを定義することもできます。アイコンはAndroidManifest.xmlのserviceのiconに定義されたものが参照されます。カットインマネージャーを起動し、IconicPickedを選択してください。</string>
-    <string name="iconicppickedactivity_message">カットインマネージャーにオレンジ色のアイコンを表示させます。</string>
+    <string name="iconicppickedactivity_message">カットインマネージャーにオレンジ色のカットインアイコンを表示させます。</string>
     <string name="cutinidactivity_desctiption">カットインマネージャーにカットインIDを登録することができます。カットインマネージャーを起動し、CutInIdを選択してください。</string>
     <string name="cutinidactivity_message">カットインマネージャーにカットインIDを登録します。</string>
     <string name="preferenceactivity_desctiption">設定値を参照したカットインを表示します。Preferenceやパッケージ内DBを使用する場合は、AndroidManifest.xmlでserviceのprocessを定義しないでください。カットインマネージャーを起動し、Preferenceを選択してください。</string>

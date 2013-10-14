@@ -32,15 +32,6 @@ public class IconicPickedActivity extends Activity{
 				&& intent.getAction().equals(CutinInfo.ACTION_PICK_CUTIN)) {
 			
 			setContentView(R.layout.activity_iconicpicked_picked);
-			final Demo demo = new Demo(this);
-			
-			View demoButton = findViewById(R.id.demoButton);
-			demoButton.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					demo.play(IconicCutin.class);
-				}
-			});
 			
 			View okButton = findViewById(R.id.okButton);
 			okButton.setOnClickListener(new View.OnClickListener() {
@@ -50,15 +41,6 @@ public class IconicPickedActivity extends Activity{
 					CutinItem item = new CutinItem(IconicCutin.class, "IconicPicked");
 					Intent intent = CutinInfo.buildPickedIntent(item);
 					setResult(RESULT_OK , intent);
-					finish();
-				}
-			});
-			
-			View cancelButton = findViewById(R.id.cancelButton);
-			cancelButton.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					setResult(RESULT_CANCELED);
 					finish();
 				}
 			});

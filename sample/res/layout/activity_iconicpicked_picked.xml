@@ -11,31 +11,10 @@
         android:text="@string/iconicppickedactivity_message" />
 
     <Button
-        android:id="@+id/demoButton"
+        android:id="@+id/okButton"
+        style="@android:attr/buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/demo" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/cancelButton"
-            style="@android:attr/buttonBarButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@android:string/cancel" />
-
-        <Button
-            android:id="@+id/okButton"
-            style="@android:attr/buttonBarButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@android:string/ok" />
-    </LinearLayout>
+        android:text="@android:string/ok" />
 
 </LinearLayout>
