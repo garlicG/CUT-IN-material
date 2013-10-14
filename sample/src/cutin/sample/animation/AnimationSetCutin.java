@@ -36,8 +36,8 @@ private View mView;
 		int centerY = mView.getHeight()/2;
 		
 		AnimationSet as = new AnimationSet(false);
-		as.addAnimation(new TranslateAnimation(0f, 100f , 0f,100f));
-		as.addAnimation(new AlphaAnimation(0.2f, 1f));
+		as.addAnimation(new TranslateAnimation(-100f, 100f , -100f,100f));
+		as.addAnimation(new AlphaAnimation(0.5f, 1f));
 		as.addAnimation(new RotateAnimation(0f, 720f , centerX , centerY));
 		as.addAnimation(new ScaleAnimation(0.2f, 1f, 0.2f, 1f , centerX , centerY));
 		as.setDuration(2000);

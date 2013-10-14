@@ -1,17 +1,14 @@
 package cutin.sample.animation;
 
-import java.util.Random;
-
-import com.garlicg.cutinlib.CutinService;
-
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
-import android.widget.TextView;
+
+import com.garlicg.cutinlib.CutinService;
+
 import cutin.sample.R;
 
 public class RecursiveAnimationCutin extends CutinService{
