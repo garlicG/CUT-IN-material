@@ -2,10 +2,6 @@ package cutin.sample;
 
 import java.util.ArrayList;
 
-import cutin.sample.animation.AnimationsActivity;
-import cutin.sample.animation.GLSurfaceViewCutin;
-
-
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -18,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import cutin.sample.animation.AnimationsActivity;
 
 /**
  * SimplePickedActivity

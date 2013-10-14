@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="14"
         android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -37,7 +37,7 @@
 
         <service
             android:name="cutin.sample.SimpleCutin"
-            android:process=".simplecutin" >
+            android:process=".cutin_simple" >
             <intent-filter>
                 <action android:name="cutin.sample.SimpleCutin" />
             </intent-filter>
@@ -57,7 +57,7 @@
         <service
             android:name="cutin.sample.IconicCutin"
             android:icon="@drawable/ic_orange"
-            android:process=".iconiccutin" >
+            android:process=".cutin_iconic" >
             <intent-filter>
                 <action android:name="cutin.sample.IconicCutin" />
             </intent-filter>
@@ -76,7 +76,7 @@
 
         <service
             android:name="cutin.sample.CutinIdCutin"
-            android:process=".cutinidcutin" >
+            android:process=".cutin_cutinid" >
             <intent-filter>
                 <action android:name="cutin.sample.CutinIdCutin" />
             </intent-filter>
@@ -106,7 +106,7 @@
 
         <service
             android:name="cutin.sample.CustomDemoCutin"
-            android:process=".customdemocutin" />
+            android:process=".cutin_customdemo" />
 
         <activity
             android:name="cutin.sample.animation.AnimationsActivity"
@@ -120,11 +120,40 @@
         </activity>
 
         <service
-            android:name="cutin.sample.animation.GLSurfaceViewCutin"
-            android:process=".glsurfaceview" />
+            android:name="cutin.sample.animation.AnimationSetCutin"
+            android:process=".cutin_animationset" >
+            <intent-filter>
+                <action android:name="cutin.sample.animation.AnimationSetCutin" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="cutin.sample.animation.AnimationComboCutin"
+            android:process=".cutin_animationcombo" >
+            <intent-filter>
+                <action android:name="cutin.sample.animation.AnimateDrawableCutin" />
+            </intent-filter>
+        </service>
         <service
             android:name="cutin.sample.animation.AnimateDrawableCutin"
-            android:process=".animatedrawable" />
+            android:process=".cutin_animatedrawable" >
+            <intent-filter>
+                <action android:name="cutin.sample.animation.AnimateDrawableCutin" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="cutin.sample.animation.AnimatorCutin"
+            android:process=".cutin_animator" >
+            <intent-filter>
+                <action android:name="cutin.sample.animation.AnimatorCutin" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="cutin.sample.animation.GLSurfaceViewCutin"
+            android:process=".cutin_glsurfaceview" >
+            <intent-filter>
+                <action android:name="cutin.sample.animation.GLSurfaceViewCutin" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
