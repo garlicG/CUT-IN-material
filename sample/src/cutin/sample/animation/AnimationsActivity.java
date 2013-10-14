@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,6 +17,8 @@ import android.widget.ListView;
 import com.garlicg.cutinlib.CutinInfo;
 import com.garlicg.cutinlib.CutinItem;
 import com.garlicg.cutinlib.Demo;
+
+import cutin.sample.BuildConfig;
 
 public class AnimationsActivity extends Activity{
 	
@@ -35,12 +38,13 @@ public class AnimationsActivity extends Activity{
 				demo.play(data.serviceClass);
 			}
 		});
+		boolean more14 = Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH;
 		
 		ArrayList<CutinItem> list = new ArrayList<CutinItem>();
 		list.add(new CutinItem(AnimationSetCutin.class , AnimationSetCutin.class.getSimpleName()));
 		list.add(new CutinItem(RecursiveAnimationCutin.class , RecursiveAnimationCutin.class.getSimpleName()));
 		list.add(new CutinItem(AnimateDrawableCutin.class , AnimateDrawableCutin.class.getSimpleName()));
-		list.add(new CutinItem(AnimatorCutin.class , AnimatorCutin.class.getSimpleName()));
+		if(more14)list.add(new CutinItem(AnimatorCutin.class , AnimatorCutin.class.getSimpleName()));
 		list.add(new CutinItem(SweepCutin.class , SweepCutin.class.getSimpleName()));
 		list.add(new CutinItem(PathEffectsCutin.class , PathEffectsCutin.class.getSimpleName()));
 		list.add(new CutinItem(PatternsCutin.class , PatternsCutin.class.getSimpleName()));
