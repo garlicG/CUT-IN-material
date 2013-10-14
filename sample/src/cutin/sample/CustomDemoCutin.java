@@ -10,16 +10,17 @@ import android.widget.TextView;
 
 import com.garlicg.cutinlib.CutinService;
 
-public class SimpleCutIn extends CutinService{
+public class CustomDemoCutin extends CutinService{
 	private View mView;
+	private TextView mTextView;
+	public static final String KEY_CUSTOM = "key_custom";
 	
 	@Override
 	protected View create() {
 		LayoutInflater inflater = LayoutInflater.from(this);
 		View layout = inflater.inflate(R.layout.cutin_default, null);
 		mView = layout.findViewById(R.id.cutin_default_view);
-		TextView textView = (TextView)layout.findViewById(R.id.cutin_default_text);
-		textView.setText("SimpleCutIn");
+		mTextView = (TextView)layout.findViewById(R.id.cutin_default_text);
 		return layout;
 	}
 
@@ -29,6 +30,9 @@ public class SimpleCutIn extends CutinService{
 
 	@Override
 	protected void start(Intent intent, int flags, int startId) {
+		String name = intent.getStringExtra(KEY_CUSTOM);
+		mTextView.setText(name);
+		
 		int centerX = mView.getWidth()/2;
 		int centerY = mView.getHeight()/2;
 		RotateAnimation anim = new RotateAnimation(0.f, 720f , centerX , centerY);

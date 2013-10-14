@@ -38,7 +38,7 @@ public class IconicPickedActivity extends Activity{
 			demoButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					demo.play(IconicCutIn.class);
+					demo.play(IconicCutin.class);
 				}
 			});
 			
@@ -47,7 +47,7 @@ public class IconicPickedActivity extends Activity{
 				@Override
 				public void onClick(View v) {
 					// Register IconicCutIn to CutIn Manager.
-					CutinItem item = new CutinItem(IconicCutIn.class, "IconicPicked");
+					CutinItem item = new CutinItem(IconicCutin.class, "IconicPicked");
 					Intent intent = CutinInfo.buildPickedIntent(item);
 					setResult(RESULT_OK , intent);
 					finish();

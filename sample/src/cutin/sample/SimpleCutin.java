@@ -1,8 +1,6 @@
 package cutin.sample;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -12,17 +10,16 @@ import android.widget.TextView;
 
 import com.garlicg.cutinlib.CutinService;
 
-public class PreferenceCutIn extends CutinService{
+public class SimpleCutin extends CutinService{
 	private View mView;
-	private TextView mTextView;
-	public static final String KEY_NAME = "key_name";
 	
 	@Override
 	protected View create() {
 		LayoutInflater inflater = LayoutInflater.from(this);
 		View layout = inflater.inflate(R.layout.cutin_default, null);
 		mView = layout.findViewById(R.id.cutin_default_view);
-		mTextView = (TextView)layout.findViewById(R.id.cutin_default_text);
+		TextView textView = (TextView)layout.findViewById(R.id.cutin_default_text);
+		textView.setText("SimpleCutIn");
 		return layout;
 	}
 
@@ -32,11 +29,6 @@ public class PreferenceCutIn extends CutinService{
 
 	@Override
 	protected void start(Intent intent, int flags, int startId) {
-		// Get Name from Preference.
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		String name = prefs.getString(KEY_NAME, "DEFAULT");
-		mTextView.setText(name);
-		
 		int centerX = mView.getWidth()/2;
 		int centerY = mView.getHeight()/2;
 		RotateAnimation anim = new RotateAnimation(0.f, 720f , centerX , centerY);

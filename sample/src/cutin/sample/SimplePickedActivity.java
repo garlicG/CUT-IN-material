@@ -31,7 +31,7 @@ public class SimplePickedActivity extends Activity {
 			demoButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					demo.play(SimpleCutIn.class);
+					demo.play(SimpleCutin.class);
 				}
 			});
 			
@@ -40,7 +40,7 @@ public class SimplePickedActivity extends Activity {
 				@Override
 				public void onClick(View v) {
 					// Register SimpleCutIn to CutIn Manager.
-					CutinItem item = new CutinItem(SimpleCutIn.class, "SimplePicked");
+					CutinItem item = new CutinItem(SimpleCutin.class, "SimplePicked");
 					Intent intent = CutinInfo.buildPickedIntent(item);
 					setResult(RESULT_OK , intent);
 					finish();

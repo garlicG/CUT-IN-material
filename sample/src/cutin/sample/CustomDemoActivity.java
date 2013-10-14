@@ -30,8 +30,8 @@ public class CustomDemoActivity extends Activity{
 	
 	private void play(String name){
 		stop();
-		mCutInIntent = new Intent(this , CustomDemoCutIn.class);
-		mCutInIntent.putExtra(CustomDemoCutIn.KEY_CUSTOM, name);
+		mCutInIntent = new Intent(this , CustomDemoCutin.class);
+		mCutInIntent.putExtra(CustomDemoCutin.KEY_CUSTOM, name);
 		startService(mCutInIntent);
 	}
 	

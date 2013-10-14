@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.garlicg.cutinlib.CutinInfo;
 import com.garlicg.cutinlib.CutinService;
 
-public class CutInIdCutIn extends CutinService{
+public class CutinIdCutin extends CutinService{
 	private View mView;
 	private TextView mTextView;
 	

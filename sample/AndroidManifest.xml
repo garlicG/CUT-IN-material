@@ -36,10 +36,10 @@
         </activity>
 
         <service
-            android:name="cutin.sample.SimpleCutIn"
+            android:name="cutin.sample.SimpleCutin"
             android:process=".simplecutin" >
             <intent-filter>
-                <action android:name="cutin.sample.SimpleCutIn" />
+                <action android:name="cutin.sample.SimpleCutin" />
             </intent-filter>
         </service>
 
@@ -55,17 +55,17 @@
         </activity>
 
         <service
-            android:name="cutin.sample.IconicCutIn"
+            android:name="cutin.sample.IconicCutin"
             android:icon="@drawable/ic_orange"
             android:process=".iconiccutin" >
             <intent-filter>
-                <action android:name="cutin.sample.IconicCutIn" />
+                <action android:name="cutin.sample.IconicCutin" />
             </intent-filter>
         </service>
 
         <activity
-            android:name="cutin.sample.CutInIdActivity"
-            android:label="CutInId" >
+            android:name="cutin.sample.CutinIdActivity"
+            android:label="CutinId" >
             <intent-filter>
                 <action android:name="com.garlicg.cutin.action.PICK" />
 
@@ -75,10 +75,10 @@
         </activity>
 
         <service
-            android:name="cutin.sample.CutInIdCutIn"
+            android:name="cutin.sample.CutinIdCutin"
             android:process=".cutinidcutin" >
             <intent-filter>
-                <action android:name="cutin.sample.CutInIdCutIn" />
+                <action android:name="cutin.sample.CutinIdCutin" />
             </intent-filter>
         </service>
 
@@ -93,9 +93,9 @@
             </intent-filter>
         </activity>
 
-        <service android:name="cutin.sample.PreferenceCutIn" >
+        <service android:name="cutin.sample.PreferenceCutin" >
             <intent-filter>
-                <action android:name="cutin.sample.PreferenceCutIn" />
+                <action android:name="cutin.sample.PreferenceCutin" />
             </intent-filter>
         </service>
 
@@ -105,7 +105,7 @@
         </activity>
 
         <service
-            android:name="cutin.sample.CustomDemoCutIn"
+            android:name="cutin.sample.CustomDemoCutin"
             android:process=".customdemocutin" />
 
         <activity
@@ -120,10 +120,10 @@
         </activity>
 
         <service
-            android:name="cutin.sample.animation.GLSurfaceViewCutIn"
+            android:name="cutin.sample.animation.GLSurfaceViewCutin"
             android:process=".glsurfaceview" />
         <service
-            android:name="cutin.sample.animation.AnimateDrawableCutIn"
+            android:name="cutin.sample.animation.AnimateDrawableCutin"
             android:process=".animatedrawable" />
     </application>
 

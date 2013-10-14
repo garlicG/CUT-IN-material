@@ -12,7 +12,7 @@ import com.garlicg.cutinlib.CutinInfo;
 import com.garlicg.cutinlib.CutinItem;
 import com.garlicg.cutinlib.Demo;
 
-public class CutInIdActivity extends Activity{
+public class CutinIdActivity extends Activity{
 	private Demo mDemo;
 	
 	private void setupCutInIdButton(View demoButton , View okButton, final long cutInId){
@@ -20,7 +20,7 @@ public class CutInIdActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				// CutInIdCutIn service receive this cutInId.
-				mDemo.play(CutInIdCutIn.class , cutInId);
+				mDemo.play(CutinIdCutin.class , cutInId);
 			}
 		});
 		
@@ -28,7 +28,7 @@ public class CutInIdActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				// CutIn Manager register this cutInId
-				CutinItem item = new CutinItem(CutInIdCutIn.class, "CutInId:" + cutInId , cutInId);
+				CutinItem item = new CutinItem(CutinIdCutin.class, "CutInId:" + cutInId , cutInId);
 				Intent intent = CutinInfo.buildPickedIntent(item);
 				setResult(RESULT_OK , intent);
 				finish();
@@ -85,7 +85,7 @@ public class CutInIdActivity extends Activity{
 					if(intent != null){
 						startActivity(intent);
 					}else{
-						Toast.makeText(CutInIdActivity.this, "Download CutinManager!",Toast.LENGTH_SHORT).show();
+						Toast.makeText(CutinIdActivity.this, "Download CutinManager!",Toast.LENGTH_SHORT).show();
 					}
 				}
 			});

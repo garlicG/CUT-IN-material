@@ -3,7 +3,7 @@ package cutin.sample;
 import java.util.ArrayList;
 
 import cutin.sample.animation.AnimationsActivity;
-import cutin.sample.animation.GLSurfaceViewCutIn;
+import cutin.sample.animation.GLSurfaceViewCutin;
 
 
 import android.app.Activity;
@@ -55,7 +55,7 @@ public class MainActivity extends Activity {
 		ArrayList<Data> list = new ArrayList<Data>();
 		list.add(new Data(SimplePickedActivity.class));
 		list.add(new Data(IconicPickedActivity.class));
-		list.add(new Data(CutInIdActivity.class));
+		list.add(new Data(CutinIdActivity.class));
 		list.add(new Data(PreferenceActivity.class));
 		list.add(new Data(CustomDemoActivity.class));
 		list.add(new Data(AnimationsActivity.class));

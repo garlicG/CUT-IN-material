@@ -31,7 +31,7 @@ public class PreferenceActivity extends Activity{
 			
 			final EditText edit = (EditText)findViewById(R.id.preferenceEdit);
 			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-			edit.setText(prefs.getString(PreferenceCutIn.KEY_NAME, "DEFAULT"));
+			edit.setText(prefs.getString(PreferenceCutin.KEY_NAME, "DEFAULT"));
 			
 			View okButton = findViewById(R.id.okButton);
 			okButton.setOnClickListener(new View.OnClickListener() {
@@ -41,11 +41,11 @@ public class PreferenceActivity extends Activity{
 					String name = edit.getText().toString();
 					SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(PreferenceActivity.this);
 					Editor edit = prefs.edit();
-					edit.putString(PreferenceCutIn.KEY_NAME, name);
+					edit.putString(PreferenceCutin.KEY_NAME, name);
 					edit.commit();
 					
 					// Register SimpleCutIn to CutIn Manager.
-					CutinItem item = new CutinItem(PreferenceCutIn.class, "Preference");
+					CutinItem item = new CutinItem(PreferenceCutin.class, "Preference");
 					Intent intent = CutinInfo.buildPickedIntent(item);
 					setResult(RESULT_OK , intent);
 					finish();

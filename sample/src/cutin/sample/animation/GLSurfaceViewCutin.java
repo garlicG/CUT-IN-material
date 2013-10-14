@@ -31,7 +31,7 @@ import com.garlicg.cutinlib.CutinService;
  * Wrapper activity demonstrating the use of {@link GLSurfaceView} to
  * display translucent 3D graphics.
  */
-public class GLSurfaceViewCutIn extends CutinService {
+public class GLSurfaceViewCutin extends CutinService {
 	private GLSurfaceView mGLSurfaceView;
 
 	@Override

@@ -3,15 +3,18 @@ package cutin.sample.animation;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.garlicg.cutinlib.CutinInfo;
-import com.garlicg.cutinlib.CutinService;
+import com.garlicg.cutinlib.CutinItem;
 import com.garlicg.cutinlib.Demo;
 
 public class AnimationsActivity extends Activity{
@@ -19,40 +22,47 @@ public class AnimationsActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		String action = getIntent().getAction();
-		final boolean fromCutinManager = action != null && action.equals(CutinInfo.ACTION_PICK_CUTIN);
 		final Demo demo = new Demo(this);
 		
-		ListView listView = new ListView(this);
+		final ListView listView = new ListView(this);
 		setContentView(listView);
 		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				Data data = (Data) arg0.getItemAtPosition(arg2);
-				demo.play(data.cutinService);
+				CutinItem data = (CutinItem) arg0.getItemAtPosition(arg2);
+				demo.play(data.serviceClass);
 			}
 		});
 		
-		ArrayList<Data> list = new ArrayList<Data>();
-		list.add(new Data(GLSurfaceViewCutIn.class));
-		list.add(new Data(AnimateDrawableCutIn.class));
-		int layoutRes = fromCutinManager ? android.R.layout.simple_list_item_single_choice : android.R.layout.simple_list_item_1;
-		ArrayAdapter<Data> adapter = new ArrayAdapter<Data>(this, layoutRes , list);
-		listView.setAdapter(adapter);
-	}
-	
-	private class Data{
-		private String name;
-		private Class<? extends CutinService> cutinService;
-		private Data(Class<? extends CutinService> cutinService){
-			this.cutinService = cutinService;
-			name = cutinService.getSimpleName();
+		ArrayList<CutinItem> list = new ArrayList<CutinItem>();
+		list.add(new CutinItem(GLSurfaceViewCutin.class , GLSurfaceViewCutin.class.getSimpleName()));
+		list.add(new CutinItem(AnimateDrawableCutin.class , AnimateDrawableCutin.class.getSimpleName()));
+		
+		String action = getIntent().getAction();
+		final boolean fromCutinManager = action != null && action.equals(CutinInfo.ACTION_PICK_CUTIN);
+		if(fromCutinManager){
+			Button button = new Button(this);
+			button.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					CutinItem cutinItem = (CutinItem)listView.getItemAtPosition(listView.getCheckedItemPosition());
+					if(cutinItem != null){
+						Intent intent = CutinInfo.buildPickedIntent(cutinItem);
+						setResult(RESULT_OK , intent);
+						finish();
+					}
+				}
+			});
+			
+			listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+			ArrayAdapter<CutinItem> adapter = new ArrayAdapter<CutinItem>(this, android.R.layout.simple_list_item_single_choice , list);
+			listView.setAdapter(adapter);
 		}
-		@Override
-		public String toString() {
-			return name;
+		else{
+			ArrayAdapter<CutinItem> adapter = new ArrayAdapter<CutinItem>(this, android.R.layout.simple_list_item_1 , list);
+			listView.setAdapter(adapter);
 		}
 	}
 }

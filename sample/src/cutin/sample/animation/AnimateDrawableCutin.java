@@ -19,19 +19,18 @@ package cutin.sample.animation;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 
 import com.garlicg.cutinlib.CutinService;
 
 import cutin.sample.R;
 
 
-public class AnimateDrawableCutIn extends CutinService {
+public class AnimateDrawableCutin extends CutinService {
 	private SampleView mView;
 
 	@Override
@@ -75,7 +74,6 @@ public class AnimateDrawableCutIn extends CutinService {
         public SampleView(Context context) {
             super(context);
             setFocusable(true);
-            setFocusableInTouchMode(true);
 
             Drawable dr = context.getResources().getDrawable(R.drawable.yozakura);
             dr.setBounds(0, 0, dr.getIntrinsicWidth(), dr.getIntrinsicHeight());
