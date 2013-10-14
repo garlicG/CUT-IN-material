@@ -1,11 +1,11 @@
 CutIn Material
 ---
 
-What is CutIn? It is effects on your phone, like in games but not in games. Try out the [sample app](https://play.google.com/store/apps/details?id=cutin.sample) on the Google Play.
+What is CutIn? It is effects on your phone, like in games but not in games.
 
 ![photo_cutin](photo_cutin.png) ![garlin_padado](garlin_parado.png) ![trendszawazawa](trendszawazawa)
 
-CutIn Material is based on [CutIn Manager](https://play.google.com/store/apps/details?id=com.garlicg.cutin) app. CutIn Manger call Materials at the follow cases:
+CutIn Material is based on [CutIn Manager](https://play.google.com/store/apps/details?id=com.garlicg.cutin) app. CutIn Manger call CutIn Materials at the follow cases:
 
  * Screen turns on.
  * External power is connected.
@@ -13,7 +13,7 @@ CutIn Material is based on [CutIn Manager](https://play.google.com/store/apps/de
  * The date changed
  * Indicated low battery condition
  
-If you have made an Material app , please message me. CutIn Manager have own random advertising area for CutIn Materials. It is free and will promote your apps.
+If you have made an Material app , please message me. CutIn Manager has own random advertising area for CutIn Materials. It is free and will promote your apps.
 
 GarlicG : garlicg@gmail.com
 
@@ -21,48 +21,40 @@ Directory
 ---
 | name | description |
 |---|---|
-| cutin-connector.jar | A core library for connecting to CutinManager. |
+| cutin-connector.jar | A core library for interaction with CutinManager. |
 | lib/ | Source code of `cutin-connector.jar`. |
 | lib-viewsupport/ | AndroidLibraryProject for making convenient listview layout. |
-| sample/ | A Sample project using `lib-viewsupport/` |
-| garlin/ | A Sample project for general user. It needs [v7 appcompat library](http://developer.android.com/tools/support-library/index.html) as Android library project.|
+| sample/ | Basic samples to interact with CutIn Manager and animation samples based on API Demos. Try out the [sample app](https://play.google.com/store/apps/details?id=cutin.sample) on the Google Play. |
+| sample-viewsupport/ | A Sample project using `lib-viewsupport/`.|
 
-Quick Start
+CutinService
 ---
 
-For a working implementation of this project , add the `lib-viewsupport/` as the AndroidLibraryProject and see the `sample/` folder.
+Every CutIn is based on `CutinService` class extends `Service` of Android OS.
 
-1. Create a class for showing CutIn extends CutinService.
+1. Abstract methods of `CutinService`.
 
  |return|methods|	description|
  |---|---|---|
  |View	| create |	Create root view which is inflated to full screen window.
  |void	| start |	It is called after create(). At this time view size is possible to get. You must call finishCutin() or stopSelf() after your execution ending.
- |void |	destroy |	Release resources, etc.　
+ |void | destroy |	Release resources, etc.　
  
-2. Copy the `sample/cutin/sample/MainActivity` and replace these lines to your CutinServices in your onCreate.
+2. How to play CutIn.
  
  ```java    
- 		// Create your CutinService list:
-		// cutinName(SAMPLE) used for showing on the display in your app and CUT-IN Manager. 
-		ArrayList<CutinItem> list = new ArrayList<CutinItem>();
-		list.add(new CutinItem(CutinService1.class, "SAMPLE1"));
-		list.add(new CutinItem(CutinService2.class, "SAMPLE2"));
-		list.add(new CutinItem(CutinService3.class, "SAMPLE3"));
-		mScreen.setCutinList(list);
+Demo demo = new Demo(context);
+demo.play(cutinServiceClass);
  ```
 
-3. AndroidManifest.xml
+Recieve Intent from CutIn Manager
+---
 
-Activity
+AndroidManifest.xml
 ```xml
     <activity
         android:name="(your)ActivityName"
         android:label="@string/app_name" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
         <intent-filter>
             <action android:name="com.garlicg.cutin.action.PICK" />
             <category android:name="com.garlicg.cutin.category.RESOURCE" />
@@ -71,30 +63,29 @@ Activity
     </activity>
 ```
 
-CutinService
-```xml
-    <service android:name="(your)package.CutinServiceClassName">
-        <intent-filter>
-            <action android:name="(your)package.CutinServiceClassName" />
-        </intent-filter>
-    </service>
-```
-
-Intent from CutIn Manager
----
 `onCreate` in your `Activity`.
 ```java
 		String action = getIntent().getAction();
 		if(!TextUtils.isEmpty(action) && action.equals(CutinInfo.ACTION_PICK_CUTIN)){
-			// Called from CUT-IN Manager
+			// Called from CutIn Manager
 		}
 ```
 
 Return Intent to CutIn Manager
 ---
+
+AndroidManifest.xml
+```xml
+    <service android:name="(your)package.MyCutinServiceClass">
+        <intent-filter>
+            <action android:name="(your)package.MyCutinServiceClass" />
+        </intent-filter>
+    </service>
+```
+
 Somewhere to finish in your `Activity`.
 ```java
-		CutinItem item = new CutinItem(CutinService.class , "SAMPLE 1");
+		CutinItem item = new CutinItem(MyCutinServiceClass.class , "SAMPLE 1");
 		Intent intent = CutinInfo.buildPickedIntent(item);
 		setResult(RESULT_OK , intent);
 		finish();
