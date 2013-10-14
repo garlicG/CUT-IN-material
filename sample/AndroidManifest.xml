@@ -149,6 +149,7 @@
         </service>
         <service
             android:name="cutin.sample.animation.SurfaceViewCutin"
+            android:process=".cutin_surfaceview" 
             >
             <intent-filter>
                 <action android:name="cutin.sample.animation.SurfaceViewCutin" />
@@ -156,9 +157,26 @@
         </service>
         <service
             android:name="cutin.sample.animation.GLSurfaceViewCutin"
-            android:process=".cutin_glsurfaceview" >
+            android:process=".cutin_glsurfaceview" 
+            >
             <intent-filter>
                 <action android:name="cutin.sample.animation.GLSurfaceViewCutin" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="cutin.sample.animation.SweepCutin"
+            android:process=".cutin_sweep" 
+            >
+            <intent-filter>
+                <action android:name="cutin.sample.animation.SweepCutin" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="cutin.sample.animation.PathEffectsCutin"
+            android:process=".cutin_patheffect" 
+            >
+            <intent-filter>
+                <action android:name="cutin.sample.animation.PathEffectsCutin" />
             </intent-filter>
         </service>
     </application>

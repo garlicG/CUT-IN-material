@@ -18,17 +18,16 @@ import android.view.View;
 import com.garlicg.cutinlib.CutinService;
 
 public class SurfaceViewCutin extends CutinService{
-	private SurfaceView mView;
 	private DrawingThread mDrawingThread;
 	
 	@Override
 	protected View create() {
-		mView = new SurfaceView(this);
+		SurfaceView view = new SurfaceView(this);
 		mDrawingThread = new DrawingThread();
 		mDrawingThread.start();
-		mDrawingThread.mSurface = mView.getHolder();
+		mDrawingThread.mSurface = view.getHolder();
 		mDrawingThread.mSurface.setFormat(PixelFormat.TRANSPARENT);
-		return mView;
+		return view;
 	}
 	
 	@Override
