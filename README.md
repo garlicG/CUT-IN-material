@@ -1,11 +1,11 @@
 CutIn Material
 ---
 
-What is CutIn? It is effects on your phone, like in games but not in games. Try out the [sample app](https://play.google.com/store/apps/details?id=cutin.sample) on the Google Play.
+What is CutIn? It is effects on your phone, like in games but not in games.
 
 ![garlin_padado](garlin_parado.png)
 
-CutIn Material is based on [CutIn Manager](https://play.google.com/store/apps/details?id=com.garlicg.cutin) app. CutIn Manger call Materials at the follow cases:
+CutIn Material is based on [CutIn Manager](https://play.google.com/store/apps/details?id=com.garlicg.cutin) app. CutIn Manger call CutIn Materials at the follow cases:
 
  * Screen turns on.
  * External power is connected.
@@ -13,7 +13,7 @@ CutIn Material is based on [CutIn Manager](https://play.google.com/store/apps/de
  * The date changed
  * Indicated low battery condition
  
-If you have made an Material app , please message me. CutIn Manager have own random advertising area for CutIn Materials. It is free and will promote your apps.
+If you have made an Material app , please message me. CutIn Manager has own random advertising area for CutIn Materials. It is free and will promote your apps.
 
 GarlicG : garlicg@gmail.com
 
@@ -24,7 +24,7 @@ Directory
 | cutin-connector.jar | A core library for interaction with CutinManager. |
 | lib/ | Source code of `cutin-connector.jar`. |
 | lib-viewsupport/ | AndroidLibraryProject for making convenient listview layout. |
-| sample/ | Basic samples to interact with CutIn Manager and animation samples based on API Demos. |
+| sample/ | Basic samples to interact with CutIn Manager and animation samples based on API Demos. Try out the [sample app](https://play.google.com/store/apps/details?id=cutin.sample) on the Google Play. |
 | sample-viewsupport/ | A Sample project using `lib-viewsupport/`.|
 
 CutinService
@@ -56,10 +56,6 @@ AndroidManifest.xml
         android:name="(your)ActivityName"
         android:label="@string/app_name" >
         <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        <intent-filter>
             <action android:name="com.garlicg.cutin.action.PICK" />
             <category android:name="com.garlicg.cutin.category.RESOURCE" />
             <category android:name="android.intent.category.DEFAULT" />
@@ -71,7 +67,7 @@ AndroidManifest.xml
 ```java
 		String action = getIntent().getAction();
 		if(!TextUtils.isEmpty(action) && action.equals(CutinInfo.ACTION_PICK_CUTIN)){
-			// Called from CUT-IN Manager
+			// Called from CutIn Manager
 		}
 ```
 
