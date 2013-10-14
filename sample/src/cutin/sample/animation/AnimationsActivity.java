@@ -38,7 +38,7 @@ public class AnimationsActivity extends Activity{
 		
 		ArrayList<CutinItem> list = new ArrayList<CutinItem>();
 		list.add(new CutinItem(AnimationSetCutin.class , AnimationSetCutin.class.getSimpleName()));
-		list.add(new CutinItem(AnimationComboCutin.class , AnimationComboCutin.class.getSimpleName()));
+		list.add(new CutinItem(RecursiveAnimationCutin.class , RecursiveAnimationCutin.class.getSimpleName()));
 		list.add(new CutinItem(AnimateDrawableCutin.class , AnimateDrawableCutin.class.getSimpleName()));
 		list.add(new CutinItem(AnimatorCutin.class , AnimatorCutin.class.getSimpleName()));
 		list.add(new CutinItem(GLSurfaceViewCutin.class , GLSurfaceViewCutin.class.getSimpleName()));

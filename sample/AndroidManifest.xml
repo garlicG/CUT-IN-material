@@ -127,10 +127,10 @@
             </intent-filter>
         </service>
         <service
-            android:name="cutin.sample.animation.AnimationComboCutin"
-            android:process=".cutin_animationcombo" >
+            android:name="cutin.sample.animation.RecursiveAnimationCutin"
+            android:process=".cutin_recursiveanimation" >
             <intent-filter>
-                <action android:name="cutin.sample.animation.AnimateDrawableCutin" />
+                <action android:name="cutin.sample.animation.RecursiveAnimationCutin" />
             </intent-filter>
         </service>
         <service
