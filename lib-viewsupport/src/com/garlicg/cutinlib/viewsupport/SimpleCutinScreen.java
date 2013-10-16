@@ -207,9 +207,11 @@ public class SimpleCutinScreen{
 				try {
 					Resources res = getContext().getResources();
 					ServiceInfo si = pm.getServiceInfo(new ComponentName(getContext(), serviceClass), 0);
-					icon = res.getDrawable(si.icon);
-					int bond = (int)(res.getDisplayMetrics().density * 48 + 0.5f);
-					icon.setBounds(0, 0, bond,bond );
+					if(si.icon != 0){
+						icon = res.getDrawable(si.icon);
+						int bond = (int)(res.getDisplayMetrics().density * 48 + 0.5f);
+						icon.setBounds(0, 0, bond,bond );
+					}
 				} catch (NameNotFoundException e) {
 				} catch (Resources.NotFoundException e) {
 				}
