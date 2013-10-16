@@ -35,6 +35,7 @@ public class MainActivity extends Activity{
 		ArrayList<Data> list = new ArrayList<MainActivity.Data>();
 		list.add(new Data(CutinListActivity.class));
 		list.add(new Data(CutinListFragmentActivity.class));
+		list.add(new Data(CutinCategoryListActivity.class));
 		list.add(new Data(CutinIconListActivity.class));
 		
 		ArrayAdapter<Data> adapter = new ArrayAdapter<MainActivity.Data>(this, android.R.layout.simple_list_item_1 , list);

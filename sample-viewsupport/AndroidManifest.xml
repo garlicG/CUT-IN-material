@@ -45,6 +45,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="cutin.sampleviewsupport.CutinCategoryListActivity"
+            android:label="CutinCategoryList" >
+            <intent-filter>
+                <action android:name="com.garlicg.cutin.action.PICK" />
+
+                <category android:name="com.garlicg.cutin.category.RESOURCE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="cutin.sampleviewsupport.CutinIconListActivity"
             android:label="CutinIconList" >
             <intent-filter>

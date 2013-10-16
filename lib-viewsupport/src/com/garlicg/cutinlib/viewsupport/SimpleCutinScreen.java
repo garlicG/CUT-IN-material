@@ -181,15 +181,24 @@ public class SimpleCutinScreen{
 		}
 	}
 	
+	
+	public static class Category extends CutinItem{
+		public Category(String label){
+			super(null, label);
+		}
+	}
+	
 	private class SimpleCutinAdapter extends ArrayAdapter<CutinItem>{
 		private Drawable[] mDrawables;
 		private final int RESOURCE_ID;
+		private final int RESOURCE_CATEGORY_ID;
 		LayoutInflater mInflater;
 		
 		public SimpleCutinAdapter(Context context, int resource,
 				List<CutinItem> objects) {
 			super(context, resource, android.R.id.text1,objects);
 			RESOURCE_ID = resource;
+			RESOURCE_CATEGORY_ID = R.layout.cutin_list_item_category;
 			mInflater = LayoutInflater.from(context);
 			if(objects != null){
 				mDrawables = new Drawable[objects.size()];
@@ -224,22 +233,32 @@ public class SimpleCutinScreen{
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			View view = convertView;
-			if(view == null){
-				view = mInflater.inflate(RESOURCE_ID, null);
-			}
-			
 			CutinItem item = getItem(position);
-			TextView text = (TextView)view.findViewById(android.R.id.text1);
-			text.setText(item.cutinName);
-			
-			if(mDrawables[position] != null){
-				text.setCompoundDrawables(mDrawables[position],null, null, null);
+			if(item instanceof Category){
+				view = mInflater.inflate(RESOURCE_CATEGORY_ID, null);
+				TextView text = (TextView)view.findViewById(android.R.id.text1);
+				text.setText(item.cutinName);
 			}
 			else{
-				text.setCompoundDrawables(null,null, null, null);
+				view = mInflater.inflate(RESOURCE_ID, null);
+				TextView text = (TextView)view.findViewById(android.R.id.text1);
+				text.setText(item.cutinName);
+				
+				if(mDrawables[position] != null){
+					text.setCompoundDrawables(mDrawables[position],null, null, null);
+				}
+				else{
+					text.setCompoundDrawables(null,null, null, null);
+				}
 			}
+			
 			return view;
 		}
+		
+		@Override
+		public boolean isEnabled(int position) {
+			Object obj = getItem(position);
+			return !(obj instanceof Category);
+		}
 	}
-	
 }
