@@ -20,9 +20,25 @@ public class CutinListActivity extends Activity implements SimpleCutinScreen.Pic
 		setContentView(mScreen.getView());
 		
 		ArrayList<CutinItem> list = new ArrayList<CutinItem>();
+		
+//		You need to create your Cutin Class like SampleCutin and replace below.
+//		SampleCutinクラスのようなカットインクラスを作成し、下のコードを置き換えてください。
+//		
+//		list.add(new CutinItem(SampleCutin.class, SampleCutin.class.getSimpleName()));
+//		list.add(new CutinItem(SampleCutin.class, SampleCutin.class.getSimpleName()));
+//		list.add(new CutinItem(SampleCutin.class, SampleCutin.class.getSimpleName()));
+//		list.add(new CutinItem(SampleCutin.class, SampleCutin.class.getSimpleName()));
+//		list.add(new CutinItem(SampleCutin.class, SampleCutin.class.getSimpleName()));
+//		list.add(new CutinItem(SampleCutin.class, SampleCutin.class.getSimpleName()));
+//		list.add(new CutinItem(SampleCutin.class, SampleCutin.class.getSimpleName()));
+//		list.add(new CutinItem(SampleCutin.class, SampleCutin.class.getSimpleName()));
+		
+		// abbreviation
+		// 省略
 		for(int i = 0 ; i < 20 ; i++){
 			list.add(new CutinItem(SampleCutin.class, SampleCutin.class.getSimpleName()));
 		}
+		
 		mScreen.setCutinList(list);
 		
 		if(mScreen.getState() == SimpleCutinScreen.STATE_PICK){
