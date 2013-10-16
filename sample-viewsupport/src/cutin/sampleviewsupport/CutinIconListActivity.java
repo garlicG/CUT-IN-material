@@ -21,6 +21,7 @@ public class CutinIconListActivity extends Activity implements SimpleCutinScreen
 		
 		ArrayList<CutinItem> list = new ArrayList<CutinItem>();
 		for(int i = 0 ; i < 20 ; i++){
+			// See Service tag of AndroidManifest.xml
 			list.add(new CutinItem(SampleCutin2.class, SampleCutin2.class.getSimpleName()));
 		}
 		mScreen.setCutinList(list);
