@@ -23,6 +23,30 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="cutin.sampleviewsupport.CutinListActivity"
+            android:label="CutinList" >
+            <intent-filter>
+                <action android:name="com.garlicg.cutin.action.PICK" />
+
+                <category android:name="com.garlicg.cutin.category.RESOURCE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cutin.sampleviewsupport.CutinListFragmentActivity"
+            android:label="CutinListFragment" >
+            <intent-filter>
+                <action android:name="com.garlicg.cutin.action.PICK" />
+
+                <category android:name="com.garlicg.cutin.category.RESOURCE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cutin.sampleviewsupport.CutinIconListActivity"
+            android:label="CutinIconList" >
             <intent-filter>
                 <action android:name="com.garlicg.cutin.action.PICK" />
 
@@ -32,27 +56,20 @@
         </activity>
 
         <service
-            android:name="cutin.sampleviewsupport.CutinService1"
-            android:process=".cutinService1" >
+            android:name="cutin.sampleviewsupport.SampleCutin"
+            android:process=".samplecutin" >
             <intent-filter>
-                <action android:name="cutin.sampleviewsupport.CutinService1" />
+                <action android:name="cutin.sampleviewsupport.SampleCutin" />
             </intent-filter>
         </service>
         <service
-            android:name="cutin.sampleviewsupport.CutinService2"
-            android:process=".cutinService2" >
+            android:name="cutin.sampleviewsupport.SampleCutin2"
+            android:icon="@drawable/ic_launcher"
+            android:process=".samplecutin2" >
             <intent-filter>
-                <action android:name="cutin.sampleviewsupport.CutinService2" />
-            </intent-filter>
-        </service>
-        <service
-            android:name="cutin.sampleviewsupport.CutinService3"
-            android:process=".cutinService3" >
-            <intent-filter>
-                <action android:name="cutin.sampleviewsupport.CutinService3" />
+                <action android:name="cutin.sampleviewsupport.SampleCutin2" />
             </intent-filter>
         </service>
     </application>
 
 </manifest>
-

@@ -9,44 +9,43 @@ import android.view.animation.RotateAnimation;
 
 import com.garlicg.cutinlib.CutinService;
 
-public class CutinService3 extends CutinService{
-	
-	private View mDroid;
+public class SampleCutin extends CutinService{
+	private View mView;
 
 	@Override
 	protected View create() {
 		LayoutInflater inflater = LayoutInflater.from(this);
 		View layout = inflater.inflate(R.layout.cutin_service_layout,null);
-		mDroid = layout.findViewById(R.id.droid);
-		return layout;
 		
-	}
-
-	@Override
-	protected void start(Intent intent, int flags, int startId) {
-		// Animation which droid 10 rotate.
-		int centerX = mDroid.getWidth()/2;
-		int centerY = mDroid.getHeight()/2;
-		RotateAnimation anim = new RotateAnimation(0.f, 360*10 , centerX , centerY);
-		anim.setDuration(1000);
-		anim.setAnimationListener(new AnimationListener() {
-			@Override
-			public void onAnimationStart(Animation animation) {
-			}
-			
-			@Override
-			public void onAnimationRepeat(Animation animation) {
-			}
-			
-			@Override
-			public void onAnimationEnd(Animation animation) {
-				finishCutin(); 
-			}
-		});
-		mDroid.startAnimation(anim);
+		// Keep View for starting animation on start()
+		mView = layout.findViewById(R.id.cutin);
+		
+		// need to return root view.
+		return layout;
 	}
 
 	@Override
 	protected void destroy() {
 	}
+
+	@Override
+	protected void start(Intent arg0, int arg1, int arg2) {
+		int centerX = mView.getWidth()/2;
+		int centerY = mView.getHeight()/2;
+		
+		RotateAnimation anim = new RotateAnimation(0.f , 720f , centerX , centerY);
+		anim.setDuration(2000);
+		anim.setAnimationListener(new AnimationListener() {
+			@Override
+			public void onAnimationStart(Animation animation) {}
+			@Override
+			public void onAnimationRepeat(Animation animation) {}
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				finishCutin();
+			}
+		});
+		mView.startAnimation(anim);
+	}
+
 }

@@ -3,58 +3,64 @@ package cutin.sampleviewsupport;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 
-import com.garlicg.cutinlib.CutinItem;
-import com.garlicg.cutinlib.viewsupport.SimpleCutinScreen;
-
-public class MainActivity extends Activity implements SimpleCutinScreen.PickListener{
-	private SimpleCutinScreen mScreen;
+public class MainActivity extends Activity{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		mScreen = new SimpleCutinScreen(this , getIntent());
-		setContentView(mScreen.getView());
+		ListView listView = new ListView(this);
+		listView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				Data data = (Data)arg0.getItemAtPosition(arg2);
+				Intent intent = new Intent(getApplicationContext(), data.activity);
+				startActivity(intent);
+			}
+		});
 		
-		// Create your CutinService list:
-		// cutinName(SAMPLE) use for showing on the display in your app and CUT-IN Manager. 
-		ArrayList<CutinItem> list = new ArrayList<CutinItem>();
-		list.add(new CutinItem(CutinService1.class, "SAMPLE1"));
-		list.add(new CutinItem(CutinService2.class, "SAMPLE2"));
-		list.add(new CutinItem(CutinService3.class, "SAMPLE3"));
-		mScreen.setCutinList(list);
+		ArrayList<Data> list = new ArrayList<MainActivity.Data>();
+		list.add(new Data(CutinListActivity.class));
+		list.add(new Data(CutinListFragmentActivity.class));
+		list.add(new Data(CutinIconListActivity.class));
 		
-		// When called from CUT-IN Manager
-		if(mScreen.getState() == SimpleCutinScreen.STATE_PICK){
-			mScreen.setListener(this);
-			getActionBar().setDisplayHomeAsUpEnabled(true);
+		ArrayAdapter<Data> adapter = new ArrayAdapter<MainActivity.Data>(this, android.R.layout.simple_list_item_1 , list);
+		listView.setAdapter(adapter);
+		
+		setContentView(listView);
+		
+	}
+	
+	private class Data{
+		private String name = "";
+		private Class<?extends Activity> activity;
+		private Data(Class<?extends Activity> activity){
+			this.activity = activity;
+			ComponentName cn = new ComponentName(getApplicationContext(), activity);
+			try {
+				name = getPackageManager().getActivityInfo(cn, PackageManager.GET_META_DATA).loadLabel(getPackageManager()).toString();
+			} catch (NameNotFoundException e) {
+				Log.e("MainActivity", e.toString());
+			}
+		}
+		@Override
+		public String toString() {
+			return name;
 		}
 	}
 	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if(item.getItemId() == android.R.id.home){
-			finish();
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	// OK button which is appear when called from CUT-IN Manager.
-	@Override
-	public void ok(Intent intent) {
-		setResult(Activity.RESULT_OK, intent);
-		finish();
-	}
-
-	// Cancel button which is appear when called from CUT-IN Manager.
-	@Override
-	public void cancel() {
-		finish();
-	}
 
 }
