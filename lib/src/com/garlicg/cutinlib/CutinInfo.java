@@ -42,6 +42,7 @@ public class CutinInfo {
 	public static Intent buildSetCutinIntent(CutinItem cutinItem){
 		Intent intent = new Intent(ACTION_SET_CUTIN);
 		intent.setPackage("com.garlicg.cutin");
+		intent.putExtra(DATA_ACTION_NAME, cutinItem.serviceClass.getName());
 		intent.putExtra(DATA_CUTIN_NAME, cutinItem.cutinName);
 		intent.putExtra(DATA_CUTIN_ID, cutinItem.cutinId);
 		return intent;
