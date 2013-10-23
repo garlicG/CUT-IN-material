@@ -6,6 +6,7 @@
     <string name="get_on_google_play_button">Get on GooglePlay</string>
     <string name="launch_cutin_manager">Launch CutIn Manager</string>
     <string name="simplepickedactivity_desctiption">SimplePicked is most simple sample to respond to the call from CutInManager. Launch CutIn Manager and select this.</string>
+    <string name="simplepickedactivity_message">SimplePicked is most simple sample to respond to the call from CutInManager.</string>
     <string name="iconicppickedactivity_desctiption">It is possible to difine cutIn icon (not app icon). CutInManager use defined icon on AndroidManifest (service\'s android:icon ). Launch CutIn Manager and select this.</string>
     <string name="iconicppickedactivity_message">Register the orange icon to CutIn Manager.</string>
     <string name="cutinidactivity_desctiption">It is possible to register CutIn ID to CutIn Manager. Launch CutIn Manager and select this.</string>
@@ -13,6 +14,7 @@
     <string name="preferenceactivity_desctiption">Show CutIn using Preference. If you use Preference or DB , do not define android:process on AndroidManifest.xml.Launch CutIn Manager and select this.</string>
     <string name="preferenceactivity_message">When called from CutIn Manager , use value saved to preference.</string>
     <string name="customdemoactivity_desctiption">Custom demo using Intent.</string>
+    <string name="directsettingactivity_desctiption">Send CutIn informations to CutIn Manager directory. Choose item and push OK.</string>
     <string name="demo">DEMO</string>
-
+    <string name="cutin_setting">OK</string>
 </resources>
