@@ -50,6 +50,7 @@ public class DirectSettingActivity extends Activity{
 		final ListView listView = (ListView)findViewById(R.id.direct_setting_ListView);
 		listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		listView.setAdapter(adapter);
+		listView.setItemChecked(0, true);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
