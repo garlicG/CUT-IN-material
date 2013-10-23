@@ -55,6 +55,7 @@ public class MainActivity extends Activity {
 		list.add(new Data(CutinIdActivity.class));
 		list.add(new Data(PreferenceActivity.class));
 		list.add(new Data(CustomDemoActivity.class));
+		list.add(new Data(DirectSettingActivity.class));
 		list.add(new Data(AnimationsActivity.class));
 		ArrayAdapter<Data> adapter = new ArrayAdapter<MainActivity.Data>(this, android.R.layout.simple_list_item_1 , list);
 		listView.setAdapter(adapter);

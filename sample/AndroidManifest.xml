@@ -100,6 +100,15 @@
         </service>
 
         <activity
+            android:name="cutin.sample.DirectSettingActivity"
+            android:label="DirectSetting" >
+        </activity>
+
+        <service
+            android:name="cutin.sample.DirectSettingCutIn"
+            android:process=".cutin_directsetting" />
+
+        <activity
             android:name="cutin.sample.CustomDemoActivity"
             android:label="CustomDemo" >
         </activity>
@@ -149,40 +158,35 @@
         </service>
         <service
             android:name="cutin.sample.animation.SurfaceViewCutin"
-            android:process=".cutin_surfaceview" 
-            >
+            android:process=".cutin_surfaceview" >
             <intent-filter>
                 <action android:name="cutin.sample.animation.SurfaceViewCutin" />
             </intent-filter>
         </service>
         <service
             android:name="cutin.sample.animation.GLSurfaceViewCutin"
-            android:process=".cutin_glsurfaceview" 
-            >
+            android:process=".cutin_glsurfaceview" >
             <intent-filter>
                 <action android:name="cutin.sample.animation.GLSurfaceViewCutin" />
             </intent-filter>
         </service>
         <service
             android:name="cutin.sample.animation.SweepCutin"
-            android:process=".cutin_sweep" 
-            >
+            android:process=".cutin_sweep" >
             <intent-filter>
                 <action android:name="cutin.sample.animation.SweepCutin" />
             </intent-filter>
         </service>
         <service
             android:name="cutin.sample.animation.PathEffectsCutin"
-            android:process=".cutin_patheffect" 
-            >
+            android:process=".cutin_patheffect" >
             <intent-filter>
                 <action android:name="cutin.sample.animation.PathEffectsCutin" />
             </intent-filter>
         </service>
         <service
             android:name="cutin.sample.animation.PatternsCutin"
-            android:process=".cutin_patterns" 
-            >
+            android:process=".cutin_patterns" >
             <intent-filter>
                 <action android:name="cutin.sample.animation.PatternsCutin" />
             </intent-filter>
