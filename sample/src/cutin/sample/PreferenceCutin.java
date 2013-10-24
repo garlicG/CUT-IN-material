@@ -33,7 +33,8 @@ public class PreferenceCutin extends CutinService{
 	@Override
 	protected void start(Intent intent, int flags, int startId) {
 		// Get Name from Preference.
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		SharedPreferences prefs = getSharedPreferences(getPackageName(), MODE_MULTI_PROCESS);
+		
 		String name = prefs.getString(KEY_NAME, "DEFAULT");
 		mTextView.setText(name);
 		

@@ -30,7 +30,7 @@ public class PreferenceActivity extends Activity{
 			setContentView(R.layout.activity_preference_picked);
 			
 			final EditText edit = (EditText)findViewById(R.id.preferenceEdit);
-			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+			SharedPreferences prefs = getSharedPreferences(getPackageName() ,MODE_MULTI_PROCESS);
 			edit.setText(prefs.getString(PreferenceCutin.KEY_NAME, "DEFAULT"));
 			
 			View okButton = findViewById(R.id.okButton);
@@ -39,7 +39,7 @@ public class PreferenceActivity extends Activity{
 				public void onClick(View v) {
 					// Save the name to preference. Saved name is used when show PreferenceCutIn.
 					String name = edit.getText().toString();
-					SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(PreferenceActivity.this);
+					SharedPreferences prefs = getSharedPreferences(getPackageName() ,MODE_MULTI_PROCESS);
 					Editor edit = prefs.edit();
 					edit.putString(PreferenceCutin.KEY_NAME, name);
 					edit.commit();

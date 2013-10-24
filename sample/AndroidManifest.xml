@@ -93,7 +93,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name="cutin.sample.PreferenceCutin" >
+        <service android:name="cutin.sample.PreferenceCutin" 
+            android:process=".cutin_preference" >
             <intent-filter>
                 <action android:name="cutin.sample.PreferenceCutin" />
             </intent-filter>
@@ -107,6 +108,9 @@
         <service
             android:name="cutin.sample.DirectSettingCutIn"
             android:process=".cutin_directsetting" />
+            <intent-filter>
+                <action android:name="cutin.sample.DirectSettingCutIn" />
+            </intent-filter>
 
         <activity
             android:name="cutin.sample.CustomDemoActivity"
