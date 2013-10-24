@@ -11,8 +11,6 @@
     <string name="iconicppickedactivity_message">Register the orange icon to CutIn Manager.</string>
     <string name="cutinidactivity_desctiption">It is possible to register CutIn ID to CutIn Manager. Launch CutIn Manager and select this.</string>
     <string name="cutinidactivity_message">Register CutIn ID to CutIn Manager.</string>
-    <string name="preferenceactivity_desctiption">Show CutIn using Preference. If you use Preference or DB , do not define android:process on AndroidManifest.xml.Launch CutIn Manager and select this.</string>
-    <string name="preferenceactivity_message">When called from CutIn Manager , use value saved to preference.</string>
     <string name="customdemoactivity_desctiption">Custom demo using Intent.</string>
     <string name="directsettingactivity_desctiption">Send CutIn informations to CutIn Manager directory. Choose item and push OK.</string>
     <string name="demo">DEMO</string>

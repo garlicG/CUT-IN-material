@@ -53,7 +53,6 @@ public class MainActivity extends Activity {
 		list.add(new Data(SimplePickedActivity.class));
 		list.add(new Data(IconicPickedActivity.class));
 		list.add(new Data(CutinIdActivity.class));
-		list.add(new Data(PreferenceActivity.class));
 		list.add(new Data(CustomDemoActivity.class));
 		list.add(new Data(DirectSettingActivity.class));
 		list.add(new Data(AnimationsActivity.class));
