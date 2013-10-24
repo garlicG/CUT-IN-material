@@ -51,14 +51,6 @@ public class DirectSettingActivity extends Activity{
 		listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		listView.setAdapter(adapter);
 		listView.setItemChecked(0, true);
-		listView.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				CutinItem item = (CutinItem)arg0.getItemAtPosition(arg2);
-				demo.play(item.serviceClass,item.cutinId);
-			}
-		});
 		
 		// set up Button
 		View okButton = findViewById(R.id.launch_cutin_manager);
@@ -68,7 +60,7 @@ public class DirectSettingActivity extends Activity{
 				int position = listView.getCheckedItemPosition();
 				Object obj = listView.getItemAtPosition(position);
 				if(obj != null){
-					// direct setting!
+					// direct setting
 					Intent intent = CutinInfo.buildSetCutinIntent((CutinItem)obj);
 					try{
 						startActivity(intent);
