@@ -83,15 +83,15 @@
         </service>
 
         <activity
-            android:name="cutin.sample.DirectSettingActivity"
-            android:label="DirectSetting" >
+            android:name="cutin.sample.InAppSettingsActivity"
+            android:label="InAppSettings" >
         </activity>
 
         <service
-            android:name="cutin.sample.DirectSettingCutIn"
-            android:process=".cutin_directsetting" >
+            android:name="cutin.sample.InAppSettingsCutin"
+            android:process=".cutin_inappsettings" >
             <intent-filter>
-                <action android:name="cutin.sample.DirectSettingCutIn" />
+                <action android:name="cutin.sample.InAppSettingsCutin" />
             </intent-filter>
         </service>
 

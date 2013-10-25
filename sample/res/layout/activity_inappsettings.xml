@@ -28,19 +28,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/directsettingactivity_desctiption" />
-    
-    <ListView 
-        android:id="@+id/direct_setting_ListView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        />
+        android:text="@string/inappsettingsactivity_desctiption" />
 
     <Button
         android:id="@+id/launch_cutin_manager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/cutin_setting" />
+        android:text="@string/inappsettings_setting" />
 
 </LinearLayout>
