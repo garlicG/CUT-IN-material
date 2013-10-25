@@ -25,7 +25,7 @@ Directory
 | lib/ | Source code of `cutin-connector.jar`. |
 | lib-viewsupport/ | AndroidLibraryProject for making convenient listview layout. |
 | sample/ | Basic samples to interact with CutIn Manager and animation samples based on API Demos. Try out the [sample app](https://play.google.com/store/apps/details?id=cutin.sample) on the Google Play. |
-| sample-viewsupport/ | A Sample project using `lib-viewsupport/`.|
+| sample-viewsupport/ | A Sample project using `lib-viewsupport/`. Try out the [sample app](https://play.google.com/store/apps/details?id=cutin.sampleviewsupport) on the Google Play.|
 
 CutinService
 ---
