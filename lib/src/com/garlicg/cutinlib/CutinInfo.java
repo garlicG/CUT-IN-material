@@ -1,7 +1,10 @@
 package com.garlicg.cutinlib;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 
 public class CutinInfo {
 	public final static String ACTION_PICK_CUTIN ="com.garlicg.cutin.action.PICK";
@@ -45,6 +48,23 @@ public class CutinInfo {
 		intent.putExtra(DATA_ACTION_NAME, cutinItem.serviceClass.getName());
 		intent.putExtra(DATA_CUTIN_NAME, cutinItem.cutinName);
 		intent.putExtra(DATA_CUTIN_ID, cutinItem.cutinId);
+		return intent;
+	}
+	
+	/**
+	 * Confirm to exist CutIn Manager app.
+	 */
+	public static boolean existManager(Context context){
+		PackageManager pm = context.getPackageManager();
+		Intent intent = pm.getLaunchIntentForPackage("com.garlicg.cutin");
+		return intent != null;
+	}
+	
+	/**
+	 * Get intent of CutIn Manager to Google play
+	 */
+	public static Intent getMarketIntent(){
+		Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse("market://details?id=com.garlicg.cutin"));
 		return intent;
 	}
 }
