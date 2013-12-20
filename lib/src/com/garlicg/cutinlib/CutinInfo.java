@@ -63,7 +63,7 @@ public class CutinInfo {
 	/**
 	 * Get intent of CutIn Manager to Google play
 	 */
-	public static Intent getMarketIntent(){
+	public static Intent buildMarketIntent(){
 		Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse("market://details?id=com.garlicg.cutin"));
 		return intent;
 	}
