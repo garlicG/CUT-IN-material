@@ -24,8 +24,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.garlicg.cutinlib.CutinInfo;
 import com.garlicg.cutinlib.CutinItem;
+import com.garlicg.cutinlib.CutinManagerUtils;
 import com.garlicg.cutinlib.CutinService;
 import com.garlicg.cutinlib.Demo;
 
@@ -46,7 +46,7 @@ public class SimpleCutinScreen{
 		mDemo = new Demo(context);
 		
 		String action = intent.getAction();
-		if(!TextUtils.isEmpty(action) && action.equals(CutinInfo.ACTION_PICK_CUTIN)){
+		if(!TextUtils.isEmpty(action) && action.equals(CutinService.ACTION_PICK_CUTIN)){
 			// Call from official cut-in app
 			mState = STATE_PICK;
 		}
@@ -159,7 +159,7 @@ public class SimpleCutinScreen{
 						Object item = mListView.getItemAtPosition(position);
 						if(item != null && item instanceof CutinItem){
 							CutinItem ci = (CutinItem)item;
-							mListener.ok(CutinInfo.buildPickedIntent(ci));
+							mListener.ok(CutinManagerUtils.buildResultIntent(ci));
 						}
 						else {
 							// no  selected item

@@ -2,6 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" 
+    android:background="@color/__cutin_screen_background"
     >
 
     <View
@@ -23,7 +24,7 @@
             android:layout_weight="1"
             android:background="@drawable/cutin_basic_hightlight"
             android:gravity="center"
-            android:text="@android:string/cancel" />
+            android:text="Cancel" />
 
         <View
             android:layout_width="1dp"
