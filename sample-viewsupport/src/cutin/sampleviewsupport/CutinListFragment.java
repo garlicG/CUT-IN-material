@@ -21,18 +21,22 @@ public class CutinListFragment extends Fragment implements SimpleCutinScreen.Pic
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		mScreen = new SimpleCutinScreen(getActivity() ,  getActivity().getIntent());
-		ArrayList<CutinItem> list = new ArrayList<CutinItem>();
-		for(int i = 0 ; i < 20 ; i++){
-			list.add(new CutinItem(SampleCutin.class, SampleCutin.class.getSimpleName()));
-		}
-		mScreen.setCutinList(list);
-		
 		if(mScreen.getState() == SimpleCutinScreen.STATE_PICK){
 			mScreen.setListener(this);
 			getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 		
 		return mScreen.getView();
+	}
+	
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		ArrayList<CutinItem> list = new ArrayList<CutinItem>();
+		for(int i = 0 ; i < 20 ; i++){
+			list.add(new CutinItem(SampleCutin.class, SampleCutin.class.getSimpleName()));
+		}
+		mScreen.setCutinList(list);
 	}
 	
 	@Override
