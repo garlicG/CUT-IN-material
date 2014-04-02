@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 
+/**
+ * そのうち消します
+ */
+@Deprecated
 public class CutinInfo {
 	public final static String ACTION_PICK_CUTIN ="com.garlicg.cutin.action.PICK";
 	public final static String ACTION_SET_CUTIN ="com.garlicg.cutin.action.SET";

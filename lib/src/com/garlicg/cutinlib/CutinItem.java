@@ -16,8 +16,7 @@ public class CutinItem {
 	 * @param cutinName:
 	 *            Print name of cutIn.
 	 */
-	public CutinItem(Class<? extends CutinService> serviceClass,
-			String cutinName) {
+	public CutinItem(Class<? extends CutinService> serviceClass,String cutinName) {
 		this.serviceClass = serviceClass;
 		this.cutinName = cutinName;
 	}
@@ -33,10 +32,8 @@ public class CutinItem {
 	 *            Print name as a cutIn.
 	 * @param cutinId: optional cutIn id. default is -1.
 	 */
-	public CutinItem(Class<? extends CutinService> serviceClass,
-			String cutinName, long cutinId) {
-		this.serviceClass = serviceClass;
-		this.cutinName = cutinName;
+	public CutinItem(Class<? extends CutinService> serviceClass,String cutinName, long cutinId) {
+		this(serviceClass, cutinName);
 		this.cutinId = cutinId;
 	}
 

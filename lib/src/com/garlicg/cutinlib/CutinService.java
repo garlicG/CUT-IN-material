@@ -11,6 +11,22 @@ import android.view.View;
 import android.view.WindowManager;
 
 public abstract class CutinService extends Service {
+	
+	public final static String ACTION_PICK_CUTIN ="com.garlicg.cutin.action.PICK";
+	public final static String ACTION_SET_CUTIN ="com.garlicg.cutin.action.SET";
+	public final static String EXTRA_CUTIN_ACTION ="action_name";
+	public final static String EXTRA_CUTIN_TITLE ="cutin_name";
+	public final static String EXTRA_CUTIN_ID ="cutin_id";
+	public final static String EXTRA_TRIGGER_ID ="trigger_id";
+	public final static int TRIGGER_ID_SCREEN_ON = 0;
+	public final static int TRIGGER_ID_CHARGE_ON = 1;
+	public final static int TRIGGER_ID_HEAD_SET_ON = 2;
+	public final static int TRIGGER_ID_DATE_CHANGED = 3;
+	public final static int TRIGGER_ID_LOW_BATTERY = 4;
+	public final static int TRIGGER_ID_NOTIFICATION = 5;
+	public final static String EXTRA_NOTIFICATION_TICKER ="notification_ticker";
+	public final static String EXTRA_NOTIFICATION_PACKAGE_NAME="notification_package_name";
+	
 	private View mLayout;
 	private WindowManager mWindowManager;
 	private boolean mStarted = false;
@@ -39,17 +55,15 @@ public abstract class CutinService extends Service {
 	@Override
 	final public void onCreate() {
 		super.onCreate();
-
 		mLayout = create();
 
 		if (mLayout == null) {
 			throw new NullPointerException("CutinService#create need to return view.");
 		}
 
-		@SuppressWarnings("deprecation")
 		WindowManager.LayoutParams params = new WindowManager.LayoutParams(
-				WindowManager.LayoutParams.FILL_PARENT,
-				WindowManager.LayoutParams.FILL_PARENT,
+				WindowManager.LayoutParams.MATCH_PARENT,
+				WindowManager.LayoutParams.MATCH_PARENT,
 				WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				PixelFormat.TRANSLUCENT);

@@ -4,9 +4,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
-import com.garlicg.cutinlib.CutinInfo;
-import com.garlicg.cutinlib.CutinService;
-
 /**
  * Call cutinservice.
  */
@@ -16,39 +13,77 @@ public class Demo {
 	public Demo(Context context){
 		mContext = context;
 	}
+	
+	/**
+	 * Play cutin service. If there are playing cutin , stop it and new cutin service start.
+	 */
+	public ComponentName play(Intent intent) {
+		forceStop();
+		mCutinIntent = intent;
+		return mContext.startService(intent);
+	}
 
 	/**
-	 * Play cutin service. If there are playing cutin , stop it and new cutin service start.
-	 * @param serviceClass
-	 * @return
+	 * 表示するカットインのクラスを指定してデモ再生します。
 	 */
 	public ComponentName play(Class<? extends CutinService> serviceClass) {
-		if (mCutinIntent != null) {
-			mContext.stopService(mCutinIntent);
-		}
-		mCutinIntent = new Intent(mContext, serviceClass);
-		return mContext.startService(mCutinIntent);
+		Intent intent = new Intent(mContext , serviceClass);
+		return play(intent);
 	}
 	
 	/**
-	 * Play cutin service. If there are playing cutin , stop it and new cutin service start.
-	 * @param serviceClass
-	 * @param cutinId
-	 * @return
+	 * カットインアイテムを指定してデモ再生をします。
+	 * @see CutinService.EXTRA_CUTIN_ID
 	 */
-	public ComponentName play(Class<? extends CutinService> serviceClass , long cutinId) {
-		if (mCutinIntent != null) {
-			mContext.stopService(mCutinIntent);
-		}
-		mCutinIntent = new Intent(mContext, serviceClass);
-		mCutinIntent.putExtra(CutinInfo.DATA_CUTIN_ID, cutinId);
-		return mContext.startService(mCutinIntent);
+	public ComponentName play(CutinItem item) {
+		return play(item.serviceClass, item.cutinId);
 	}
 	
-	public void forceStop(){
+	/**
+	 * カットインマネージャーに登録できる任意のIDを指定してデモ再生します。
+	 * @see CutinService.EXTRA_CUTIN_ID
+	 */
+	public ComponentName play(Class<? extends CutinService> serviceClass , long cutinId) {
+		Intent intent = new Intent(mContext,serviceClass);
+		intent.putExtra(CutinService.EXTRA_CUTIN_ID, cutinId);
+		return play(intent);
+	}
+	
+	/**
+	 * カットインマネージャーからのイベント呼び出しに応じたデモ再生をします。
+	 * @see CutinService.EXTRA_CUTIN_ID
+	 */
+	public ComponentName play(Class<? extends CutinService> serviceClass ,int triggerId){
+		Intent intent = new Intent(mContext,serviceClass);
+		intent.putExtra(CutinService.EXTRA_TRIGGER_ID, triggerId);
+		return play(intent);
+	}
+	
+	/**
+	 * カットインマネージャーからの通知呼び出しに応じたデモ再生をします。
+	 * @see CutinService.EXTRA_NOTIFICATION_PACKAGE_NAME
+	 * @see CutinService.EXTRA_NOTIFICATION_TICKER
+	 */
+	public ComponentName play(Class<? extends CutinService> serviceClass , String notifyPackageName ,String ticker){
+		Intent intent = new Intent(mContext,serviceClass);
+		intent.putExtra(CutinService.EXTRA_TRIGGER_ID, CutinService.TRIGGER_ID_NOTIFICATION);
+		intent.putExtra(CutinService.EXTRA_NOTIFICATION_PACKAGE_NAME,notifyPackageName);
+		intent.putExtra(CutinService.EXTRA_NOTIFICATION_TICKER,ticker);
+		return play(intent);
+	}
+	
+	/**
+	 * 再生中のカットインが存在する場合は停止します。
+	 */
+	public boolean forceStop(){
+		boolean isStop = false;
 		if(mCutinIntent != null){
-			mContext.stopService(mCutinIntent);
+			try{
+				isStop = mContext.stopService(mCutinIntent);
+			}catch(SecurityException e){
+			}
 		}
 		mCutinIntent = null;
+		return isStop;
 	}
 }
