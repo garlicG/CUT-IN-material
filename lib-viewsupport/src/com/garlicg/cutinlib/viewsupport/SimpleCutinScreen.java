@@ -13,7 +13,6 @@ import android.content.pm.ServiceInfo;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,19 +41,32 @@ public class SimpleCutinScreen{
 	
 	public SimpleCutinScreen(Context context , Intent intent){
 		mContext = context;
-		mViewParent = LayoutInflater.from(context).inflate(R.layout.cutin_simple_screen, null);
 		mDemo = new Demo(context);
 		
-		String action = intent.getAction();
-		if(!TextUtils.isEmpty(action) && action.equals(CutinService.ACTION_PICK_CUTIN)){
+		if(CutinManagerUtils.isCalledFromCutinManager(intent)){
 			// Call from official cut-in app
 			mState = STATE_PICK;
 		}
 		else{
 			mState = STATE_VIEW;
 		}
-		
+	}
+	
+	private View newPaddingView(Context context){
+		View padding = new View(context);
+		ListView.LayoutParams padding8 = new ListView.LayoutParams(ListView.LayoutParams.MATCH_PARENT,dpToPx(context.getResources(),8));
+		padding.setLayoutParams(padding8);
+		return padding;
+	}
+	
+	private int dpToPx(Resources res , int dp){
+    	return (int)(res.getDisplayMetrics().density * dp + 0.5f);
+	}
+	
+	public View getView(){
+		mViewParent = LayoutInflater.from(mContext).inflate(R.layout.cutin_simple_screen, null);
 		// setupListView
+		
 		mListView = (ListView)mViewParent.findViewById(R.id.__cutin_simple_ListView);
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -74,34 +86,14 @@ public class SimpleCutinScreen{
 			}
 		});
 		
-		if(existManager(context)){
-			mListView.addHeaderView(newPaddingView(context));
+		if(CutinManagerUtils.existManager(mContext)){
+			mListView.addHeaderView(newPaddingView(mContext));
 		}
 		else{
-			mGetView = LayoutInflater.from(context).inflate(R.layout.cutin_get_manager,null);
+			mGetView = LayoutInflater.from(mContext).inflate(R.layout.cutin_get_manager,null);
 			mListView.addHeaderView(mGetView);
 		}
-		mListView.addFooterView(newPaddingView(context));
-	}
-	
-	private View newPaddingView(Context context){
-		View padding = new View(context);
-		ListView.LayoutParams padding8 = new ListView.LayoutParams(ListView.LayoutParams.MATCH_PARENT,dpToPx(context.getResources(),8));
-		padding.setLayoutParams(padding8);
-		return padding;
-	}
-	
-	private int dpToPx(Resources res , int dp){
-    	return (int)(res.getDisplayMetrics().density * dp + 0.5f);
-	}
-	
-	private boolean existManager(Context context){
-		PackageManager pm = context.getPackageManager();
-		Intent intent = pm.getLaunchIntentForPackage("com.garlicg.cutin");
-		return intent != null;
-	}
-	
-	public View getView(){
+		mListView.addFooterView(newPaddingView(mContext));
 		return mViewParent;
 	}
 	
@@ -120,8 +112,9 @@ public class SimpleCutinScreen{
 	
 	public void resume(){
 		// remove view after get the manager app from this.
-		if(existManager(mContext) && mGetView != null){
+		if(CutinManagerUtils.existManager(mContext) && mGetView != null){
 			mListView.removeHeaderView(mGetView);
+			mGetView = null;
 		}
 	}
 	
