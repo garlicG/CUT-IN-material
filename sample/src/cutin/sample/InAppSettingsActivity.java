@@ -1,52 +1,46 @@
 package cutin.sample;
 
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.garlicg.cutinlib.CutinInfo;
 import com.garlicg.cutinlib.CutinItem;
+import com.garlicg.cutinlib.CutinManagerUtils;
+import com.garlicg.cutinlib.Demo;
 
 public class InAppSettingsActivity extends Activity{
 	private final InAppSettingsActivity self = this;
+	private Demo mDemo;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		mDemo = new Demo(this);
 		setContentView(R.layout.activity_inappsettings);
 		
-		View getOnGooglePlay = findViewById(R.id.get_on_google_play);
-		getOnGooglePlay.setOnClickListener(new View.OnClickListener() {
+		final CutinItem item = new CutinItem(SampleCutin.class, "InAppSettings!");
+		View demoButton = findViewById(R.id.button1);
+		demoButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(
-						Intent.ACTION_VIEW,
-						Uri.parse("market://details?id=com.garlicg.cutin"));
-				startActivity(intent);
+				mDemo.play(item);
 			}
 		});
 		
-		final CutinItem item = new CutinItem(InAppSettingsCutin.class, "InAppSettings");
-		
-		// set up Button
-		View okButton = findViewById(R.id.launch_cutin_manager);
-		okButton.setOnClickListener(new View.OnClickListener() {
+		View setButton = findViewById(R.id.button2);
+		setButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// direct setting
-				Intent intent = CutinInfo.buildSetCutinIntent(item);
-				try{
-					startActivity(intent);
-				}catch(ActivityNotFoundException e){
-					Toast.makeText(self, "Activity not found.", Toast.LENGTH_SHORT).show();
-				}
+				boolean isStart = CutinManagerUtils.startActivityInAppSet(self, item);
+				if(!isStart)Toast.makeText(self, "InAppSetting not found. Need to Download the CutIn Manager", Toast.LENGTH_SHORT).show();
 			}
 		});
 	}
 	
-
+	@Override
+	protected void onPause() {
+		super.onPause();
+		mDemo.forceStop();
+	}
 }

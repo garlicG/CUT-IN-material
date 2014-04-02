@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">CutinSamples</string>
-    <string name="get_on_google_play">カットインマネージャーと連携するサンプルです。</string>
+    <string name="get_on_google_play">カットインマネージャーをダウンロードして下さい</string>
     <string name="get_on_google_play_button">ダウンロード</string>
     <string name="launch_cutin_manager">カットインマネージャーを起動</string>
     <string name="simplepickedactivity_desctiption">SimplePickedはカットインマネージャーからの呼び出しに応答する最もシンプルなサンプルです。カットインマネージャーを起動し、SimplePickedを選択してください。</string>
@@ -11,7 +11,7 @@
     <string name="iconicppickedactivity_message">カットインマネージャーでは通常、登録されたアプリのアプリアイコンを表示しますが、カットインクラス毎にアイコンを定義することもできます。アイコンはAndroidManifest.xmlのserviceのiconに定義されたものが参照されます。</string>
     <string name="cutinidactivity_desctiption">カットインマネージャーにカットインIDを登録することができます。カットインIDを利用することにより、ひとつのCutinServiceクラスで様々なふるまいをすることできます。カットインマネージャーを起動し、CutInIdを選択してください。</string>
     <string name="cutinidactivity_message">カットインマネージャーにカットインIDを登録します。カットインIDを利用することにより、ひとつのCutinServiceクラスで様々なふるまいをすることできます。</string>
-    <string name="inappsettingsactivity_desctiption">InAppSettingsは簡単な操作でカットインを設定することができる仕組みです。カットインマネージャーから設定ダイアログを呼び出し、任意のタイミングにカットインを設定します。</string>
+    <string name="inappsettingsactivity_desctiption">カットインマネージャーのカットインイベント設定ダイアログを表示することができます。\nこのダイアログを表示するには、カットインマネージャーをインストールしている必要があります。</string>
     <string name="inappsettings_setting">カットイン設定</string>
     <string name="customdemoactivity_desctiption">Intentを使用して独自のデモ再生をします。</string>
     <string name="demo">デモ再生</string>

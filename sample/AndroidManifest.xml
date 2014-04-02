@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cutin.sample"
-    android:versionCode="3"
-    android:versionName="1.0.2" >
+    android:versionCode="4"
+    android:versionName="1.0.3" >
 
     <uses-sdk
-        android:minSdkVersion="7"
-        android:targetSdkVersion="18" />
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
@@ -24,35 +24,40 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name="cutin.sample.InAppSettingsActivity"
+            android:label="InAppSettings" >
+        </activity>
+        
+        <activity
+            android:name="cutin.sample.InAppSettingsCutinIdActivity"
+            android:label="InAppSettings CutinId" >
+        </activity>
+        
+        <activity
+            android:name="cutin.sample.InAppSettingsIconActivity"
+            android:label="InAppSettings Icon" >
+        </activity>
+        
         <activity
             android:name="cutin.sample.SimplePickedActivity"
             android:label="SimplePicked" >
             <intent-filter>
                 <action android:name="com.garlicg.cutin.action.PICK" />
-
                 <category android:name="com.garlicg.cutin.category.RESOURCE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
+        
         <service
-            android:name="cutin.sample.SimpleCutin"
-            android:process=".cutin_simple" >
+            android:name="cutin.sample.SampleCutin"
+            android:process=".cutin_sample" >
             <intent-filter>
-                <action android:name="cutin.sample.SimpleCutin" />
+                <action android:name="cutin.sample.SampleCutin" />
             </intent-filter>
         </service>
-
-        <activity
-            android:name="cutin.sample.IconicPickedActivity"
-            android:label="IconicPicked" >
-            <intent-filter>
-                <action android:name="com.garlicg.cutin.action.PICK" />
-
-                <category android:name="com.garlicg.cutin.category.RESOURCE" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
 
         <service
             android:name="cutin.sample.IconicCutin"
@@ -62,51 +67,11 @@
                 <action android:name="cutin.sample.IconicCutin" />
             </intent-filter>
         </service>
+        
 
         <activity
-            android:name="cutin.sample.CutinIdActivity"
-            android:label="CutinId" >
-            <intent-filter>
-                <action android:name="com.garlicg.cutin.action.PICK" />
-
-                <category android:name="com.garlicg.cutin.category.RESOURCE" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <service
-            android:name="cutin.sample.CutinIdCutin"
-            android:process=".cutin_cutinid" >
-            <intent-filter>
-                <action android:name="cutin.sample.CutinIdCutin" />
-            </intent-filter>
-        </service>
-
-        <activity
-            android:name="cutin.sample.InAppSettingsActivity"
-            android:label="InAppSettings" >
-        </activity>
-
-        <service
-            android:name="cutin.sample.InAppSettingsCutin"
-            android:process=".cutin_inappsettings" >
-            <intent-filter>
-                <action android:name="cutin.sample.InAppSettingsCutin" />
-            </intent-filter>
-        </service>
-
-        <activity
-            android:name="cutin.sample.CustomDemoActivity"
-            android:label="CustomDemo" >
-        </activity>
-
-        <service
-            android:name="cutin.sample.CustomDemoCutin"
-            android:process=".cutin_customdemo" />
-
-        <activity
-            android:name="cutin.sample.animation.AnimationsActivity"
-            android:label="Animations" >
+            android:name="cutin.sample.animation.DemosActivity"
+            android:label="Demos" >
             <intent-filter>
                 <action android:name="com.garlicg.cutin.action.PICK" />
 

@@ -16,18 +16,18 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/cutInIdButton1"
+            android:id="@+id/button1_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="DEMO1" />
+            android:text="DEMO ID:1" />
 
         <Button
-            android:id="@+id/okButton1"
+            android:id="@+id/button1_2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="OK:1" />
+            android:text="SET ID:1" />
     </LinearLayout>
 
     <LinearLayout
@@ -36,18 +36,18 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/cutInIdButton2"
+            android:id="@+id/button2_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="DEMO2" />
+            android:text="DEMO ID:2" />
 
         <Button
-            android:id="@+id/okButton2"
+            android:id="@+id/button2_2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="OK:2" />
+            android:text="SET ID:2" />
     </LinearLayout>
 
     <LinearLayout
@@ -55,19 +55,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/cutInIdButton3"
+       <Button
+            android:id="@+id/button3_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="DEMO3" />
+            android:text="DEMO ID:3" />
 
         <Button
-            android:id="@+id/okButton3"
+            android:id="@+id/button3_2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="OK:3" />
+            android:text="SET ID:3" />
     </LinearLayout>
 
 </LinearLayout>

@@ -13,32 +13,44 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
-import cutin.sample.animation.AnimationsActivity;
+
+import com.garlicg.cutinlib.CutinManagerUtils;
+
+import cutin.sample.animation.DemosActivity;
 
 /**
- * SimplePickedActivity
- * - SimpleCutIn
+ * Demos
  * 
- * IconicActivity
- *  - IconicCutIn
+ * InAppSettings
+ * InAppSettings with CutinId
+ * InAppSettings with Trigger
+ * InAppSettings with Notification
+ * InAppSettings with Icon
  * 
- * ParamActivity 
- * - ParamCutIn
- * 
- * PreferenceActivity
- *  - PreferenceCutIn
- *  - CustomDemo
- * 
- * AnimationsActivity
- *  - AnimCutInanim1
+ * PickedSettings
  */
 public class MainActivity extends Activity {
-
+	private Activity self = this;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		ListView listView = new ListView(this);
+		
+		// Need to download CutInManager for interactive functions.
+		if(!CutinManagerUtils.existManager(this)){
+			Button getCutinManager = new Button(this);
+			getCutinManager.setText(R.string.get_on_google_play);
+			getCutinManager.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					CutinManagerUtils.startActivityMarketOnCutinManagerPage(self);
+				}
+			});
+			listView.addHeaderView(getCutinManager);
+		}
+		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
@@ -50,15 +62,12 @@ public class MainActivity extends Activity {
 		});
 		
 		ArrayList<Data> list = new ArrayList<Data>();
-		list.add(new Data(SimplePickedActivity.class));
-		list.add(new Data(IconicPickedActivity.class));
-		list.add(new Data(CutinIdActivity.class));
-		list.add(new Data(CustomDemoActivity.class));
+		list.add(new Data(DemosActivity.class));
 		list.add(new Data(InAppSettingsActivity.class));
-		list.add(new Data(AnimationsActivity.class));
+		list.add(new Data(InAppSettingsCutinIdActivity.class));
+		list.add(new Data(InAppSettingsIconActivity.class));
 		ArrayAdapter<Data> adapter = new ArrayAdapter<MainActivity.Data>(this, android.R.layout.simple_list_item_1 , list);
 		listView.setAdapter(adapter);
-		
 		
 		setContentView(listView);
 	}
