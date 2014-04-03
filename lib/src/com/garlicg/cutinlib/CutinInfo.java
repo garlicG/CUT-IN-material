@@ -7,7 +7,9 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 
 /**
- * そのうち消します
+ * 非推奨APIです。CutinManagerUtilsを使ってください。
+ * CutinInfo is deprecated. Use CutinManagerUtils instead of this.
+ * @see CutinManagerUtils
  */
 @Deprecated
 public class CutinInfo {
