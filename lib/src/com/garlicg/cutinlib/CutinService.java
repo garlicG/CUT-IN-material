@@ -11,9 +11,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 public abstract class CutinService extends Service {
-	
-	public final static String ACTION_PICK_CUTIN ="com.garlicg.cutin.action.PICK";
-	public final static String ACTION_SET_CUTIN ="com.garlicg.cutin.action.SET";
+
 	public final static String EXTRA_CUTIN_ACTION ="action_name";
 	public final static String EXTRA_CUTIN_TITLE ="cutin_name";
 	public final static String EXTRA_CUTIN_ID ="cutin_id";

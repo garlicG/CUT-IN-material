@@ -10,7 +10,8 @@ import android.net.Uri;
  * カットインマネージャーとの連携関係のUtiltyです。
  */
 public class CutinManagerUtils {
-	
+	public final static String ACTION_PICK_CUTIN ="com.garlicg.cutin.action.PICK";
+	public final static String ACTION_SET_CUTIN ="com.garlicg.cutin.action.SET";
 	public static final String PACKAGE_NAME_CUTIN_MANAGER = "com.garlicg.cutin";
 	
 	/**
@@ -30,7 +31,7 @@ public class CutinManagerUtils {
 	 * 呼び出されるActivityはカットインマネージャーのダイアログテーマになっています。
 	 */
 	public static Intent buildInAppSetIntent(CutinItem item){
-		Intent intent = new Intent(CutinService.ACTION_SET_CUTIN);
+		Intent intent = new Intent(ACTION_SET_CUTIN);
 		intent.setPackage(PACKAGE_NAME_CUTIN_MANAGER);
 		intent.putExtra(CutinService.EXTRA_CUTIN_ACTION, item.serviceClass.getName());
 		intent.putExtra(CutinService.EXTRA_CUTIN_TITLE, item.cutinName);
@@ -84,7 +85,7 @@ public class CutinManagerUtils {
 		String action = intent.getAction();
 		if(action == null) return false;
 		
-		if(action.equals(CutinService.ACTION_PICK_CUTIN)){ 
+		if(action.equals(ACTION_PICK_CUTIN)){ 
 			return true;
 		}
 		else {
