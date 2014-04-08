@@ -94,6 +94,42 @@ public class SimpleCutinScreen{
 			mListView.addHeaderView(mGetView);
 		}
 		mListView.addFooterView(newPaddingView(mContext));
+		
+		if(getState() == STATE_PICK){
+			// inflate footer
+			ViewStub stub = (ViewStub)mViewParent.findViewById(R.id.__cutin_simple_PickerFrame);
+			View bottomFrame = stub.inflate();
+			
+			// OK button
+			View okButton = bottomFrame.findViewById(R.id.__cutin_okButton);
+			okButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if(mListener != null){
+						int position = mListView.getCheckedItemPosition();
+						Object item = mListView.getItemAtPosition(position);
+						if(item != null && item instanceof CutinItem){
+							CutinItem ci = (CutinItem)item;
+							mListener.ok(CutinManagerUtils.buildResultIntent(ci));
+						}
+						else {
+							// no  selected item
+						}
+					}
+				}
+			});
+			
+			// Cancel button
+			View cancel = bottomFrame.findViewById(R.id.__cutin_cancelButton);
+			cancel.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if(mListener != null){
+						mListener.cancel();
+					}
+				}
+			});
+		}
 		return mViewParent;
 	}
 	
@@ -137,40 +173,6 @@ public class SimpleCutinScreen{
 			SimpleCutinAdapter adapter = new SimpleCutinAdapter(mViewParent.getContext(), R.layout.cutin_list_item_single_choice,list);
 			mListView.setAdapter(adapter);
 			mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-			
-			// inflate footer
-			ViewStub stub = (ViewStub)mViewParent.findViewById(R.id.__cutin_simple_PickerFrame);
-			View bottomFrame = stub.inflate();
-			
-			// OK button
-			View okButton = bottomFrame.findViewById(R.id.__cutin_okButton);
-			okButton.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					if(mListener != null){
-						int position = mListView.getCheckedItemPosition();
-						Object item = mListView.getItemAtPosition(position);
-						if(item != null && item instanceof CutinItem){
-							CutinItem ci = (CutinItem)item;
-							mListener.ok(CutinManagerUtils.buildResultIntent(ci));
-						}
-						else {
-							// no  selected item
-						}
-					}
-				}
-			});
-			
-			// Cancel button
-			View cancel = bottomFrame.findViewById(R.id.__cutin_cancelButton);
-			cancel.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					if(mListener != null){
-						mListener.cancel();
-					}
-				}
-			});
 		}
 	}
 	
