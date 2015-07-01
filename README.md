@@ -1,3 +1,9 @@
+Deprecated
+---
+Now supporting at [CutinAppSupport](https://github.com/garlicG/CutinManagerPlugin/tree/master/CutinAppSupport). 
+
+
+
 CutIn Material
 ---
 
